@@ -1,0 +1,8 @@
+.orderInfoAccordionSummary{
+    background-color:#ffca40 !important ;
+}
+
+.orderInfoContainer{
+    display:flex;
+    align-items: center;
+}
