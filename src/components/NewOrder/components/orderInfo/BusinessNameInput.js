@@ -27,7 +27,7 @@ const BusinessOptions = styled(Auto)(({ theme }) => ({
 export default function BusinessNameInput() {
     
     const {open, setOpen, options, loading} = useBusinessOrderInputContext()
-    const {currentCustomer, setCurrentCustomer} = useNewOrderContext
+    const {currentCustomer, setCurrentCustomer} = useNewOrderContext()
     
     const [testing, setTesting] = useState()
     
@@ -48,15 +48,13 @@ export default function BusinessNameInput() {
             }}
 
 
-            getOptionLabel={(option) => (
-                `${option.business_name_cn}/${option.business_name_en}` || ''
-            )}
+            getOptionLabel={(option) => (`${option.business_name_cn}/${option.business_name_en}` || '')}
 
             value={testing}
         
             onChange={(event, newValue) => {
                 setTesting(newValue.business_name_cn);
-                // setCurrentCustomer(newValue)
+                setCurrentCustomer(newValue)
             }}
 
             options={options}
@@ -64,8 +62,8 @@ export default function BusinessNameInput() {
 
             renderOption={(props, option) => {
                 return (
-                  <MenuItem {...props} key={option.id} value={option.business_name_cn}>
-                    {option.business_name_cn}
+                  <MenuItem {...props} key={option.id} value={`${option.business_name_cn}/${option.business_name_en}`}>
+                    {`${option.business_name_cn}/${option.business_name_en}`}
                   </MenuItem>
                 );
               }}

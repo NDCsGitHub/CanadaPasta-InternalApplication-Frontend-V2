@@ -14,7 +14,41 @@ const NewOrderContextProvider = ({children}) => {
         setDate(newValue);
     };
 
+    // store current customer
     const [currentCustomer, setCurrentCustomer] = useState()    
+
+    
+    const [orderInfo, setOrderInfo] = useState({
+        billingAddress:'',
+        businessName:'',
+        customerId:'',
+        customerPhoneNumber:'',
+        customerType:'',
+        deliveryMethod:'',
+        editVersion:0,
+        notes:'',
+        orderDates:'',
+        orderDiscount:'',
+        orderID:'',
+        orderStatus:'',
+        orderTotal:'',
+        originalTotal:'',
+        paymentMethod:'',
+        pickupLocation:'',
+        shipOrPickDate:'',
+        shippingAddress:'',
+        salesRepId:'',
+        salesRepName:'',
+    })
+
+    const [orderBasket, setOrderBasket] = useState({
+        
+    })
+
+
+
+
+
 
     useEffect(()=>{
         console.log(currentCustomer)
