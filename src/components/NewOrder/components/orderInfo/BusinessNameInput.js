@@ -27,7 +27,7 @@ const BusinessOptions = styled(Auto)(({ theme }) => ({
 export default function BusinessNameInput() {
     
     const {open, setOpen, options, loading} = useBusinessOrderInputContext()
-    const {currentCustomer, setCurrentCustomer} = useNewOrderContext()
+    const {setCurrentCustomer} = useNewOrderContext()
     
     const [testing, setTesting] = useState()
     
@@ -46,20 +46,14 @@ export default function BusinessNameInput() {
             onClose={() => {
                 setOpen(false);
             }}
-
-
             getOptionLabel={(option) => (`${option.business_name_cn}/${option.business_name_en}` || '')}
-
             value={testing}
-        
             onChange={(event, newValue) => {
                 setTesting(newValue.business_name_cn);
                 setCurrentCustomer(newValue)
             }}
-
             options={options}
             loading={loading}
-
             renderOption={(props, option) => {
                 return (
                   <MenuItem {...props} key={option.id} value={`${option.business_name_cn}/${option.business_name_en}`}>

@@ -10,40 +10,41 @@ const useNewOrderContext = () => {
 
 const NewOrderContextProvider = ({children}) => {
     const [date, setDate] = useState()
-    const handleChangeDate = (newValue) => {
-        setDate(newValue);
+    const handleChangeDate = (value) => {
+        setDate(value);
     };
 
-    // store current customer
-    const [currentCustomer, setCurrentCustomer] = useState()    
+    // store current customer and order info
+    const [currentCustomer, setCurrentCustomer] = useState({})    
+    const [orderInfo, setOrderInfo] = useState({})
 
-    
-    const [orderInfo, setOrderInfo] = useState({
-        billingAddress:'',
-        businessName:'',
-        customerId:'',
-        customerPhoneNumber:'',
-        customerType:'',
-        deliveryMethod:'',
-        editVersion:0,
-        notes:'',
-        orderDates:'',
-        orderDiscount:'',
-        orderID:'',
-        orderStatus:'',
-        orderTotal:'',
-        originalTotal:'',
-        paymentMethod:'',
-        pickupLocation:'',
-        shipOrPickDate:'',
-        shippingAddress:'',
-        salesRepId:'',
-        salesRepName:'',
-    })
+    // handle orderInfo
+    const handleOrderInfo = (e) => {
+        const inputValue = e.target.value
+        const inputName = e.target.name
+        setOrderInfo({
+            ...orderInfo,
+            [inputName]:inputValue
+        })
+    }
 
-    const [orderBasket, setOrderBasket] = useState({
+    // basket
+    // const [orderBasket, setOrderBasket] = useState({
         
-    })
+    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -51,8 +52,65 @@ const NewOrderContextProvider = ({children}) => {
 
 
     useEffect(()=>{
+
+        // making sure billing input value doesn't show up undefined before a business was selected
+        let billingAddress = `${currentCustomer.billing_street_address}, ${currentCustomer.billing_city}, ${currentCustomer.billing_province}, ${currentCustomer.billing_country}, ${currentCustomer.billing_postal}`
+        if( billingAddress === 'undefined, undefined, undefined, undefined, undefined'){
+            billingAddress=''
+        }
+
+        //making sure dates are valid before entering
+        let formatDate = date
+
+        setOrderInfo({
+            billingAddress: billingAddress,
+            businessNameCn:currentCustomer.business_name_cn,
+            businessNameEn:currentCustomer.business_name_en,
+            customerId:currentCustomer.id,
+            customerPhoneNumber:currentCustomer.contact_phone,
+            customerType:currentCustomer.type,
+            deliveryMethod:'',
+            editVersion:0,
+            notes:'',
+            orderDates:date,
+            orderDiscount:'',
+            orderID:'',
+            orderStatus:'',
+            orderTotal:'',
+            originalTotal:'',
+            paymentMethod:'',
+            pickupLocation:'',
+            shipOrPickDate:'',
+            shippingAddress:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
+            salesRepId:'get it from storage when calling api',
+            salesRepName:'get it from storage when calling api',
+        })
+    },[currentCustomer,date])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+    useEffect(()=>{
         console.log(currentCustomer)
-    },[currentCustomer])
+        console.log(orderInfo)
+    },[currentCustomer,orderInfo])
 
     return (
         <NewOrderContext.Provider
@@ -61,6 +119,8 @@ const NewOrderContextProvider = ({children}) => {
                 handleChangeDate,
                 setCurrentCustomer,
                 currentCustomer,
+                orderInfo,
+                handleOrderInfo,
             }}
         >
 

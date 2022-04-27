@@ -19,7 +19,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
 export default function OrderInfo() {   
-  const {date, handleChangeDate} = useNewOrderContext();
+  const {date, handleChangeDate,orderInfo, handleOrderInfo } = useNewOrderContext();
 
 
   return (
@@ -53,14 +53,21 @@ export default function OrderInfo() {
                     label="Customer Type"
                     name='customerType'
                     margin="dense"
+                    value ={orderInfo.customerType ||''}
+                    onChange={(e)=>{
+                        handleOrderInfo(e)
+                    }}
                 />
 
                 <TextField required
                     sx={{marginLeft:'0.5rem', }}
                     label="Phone #"
-                    name='phoneNumber'
+                    name='customerPhoneNumber'
                     margin="dense"
-        
+                    value = {orderInfo.customerPhoneNumber || ''}
+                    onChange={(e)=>{
+                        handleOrderInfo(e)
+                    }}
                 />
 
                 <TextField required
@@ -68,9 +75,12 @@ export default function OrderInfo() {
                     label="Billing Address"
                     name='billingAddress'
                     margin="dense"
+                    value = {orderInfo.billingAddress || ''}
+                    onChange={(e)=>{
+                        handleOrderInfo(e)
+                    }}
                 />
-
-
+            
             </div>
 
 
@@ -79,9 +89,11 @@ export default function OrderInfo() {
                     required
                     sx={{marginLeft:'0.5rem', width:'15rem'}}
                     label="Delivery Method"
-                    name='deliveryMethod'
                     margin="dense"
-                    defaultValue={'pickup'}
+                    name='deliveryMethod'
+                    onChange={(e)=>{
+                        handleOrderInfo(e)
+                    }}
                 >
                     <MenuItem value='pickup' > Pick Up </MenuItem>
                     <MenuItem value='ship' > Ship </MenuItem>
@@ -90,7 +102,7 @@ export default function OrderInfo() {
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                     <DesktopDatePicker
                         label="Shippping/Picking Date"
-                        inputFormat="MM/DD/YYYY"
+                        inputFormat="MM-DD-YYYY"
                         value={date}
                         onChange={handleChangeDate}
                         renderInput={(params) => <TextField margin="dense" sx={{marginLeft:'0.5rem', width:'15rem'}} {...params} />}
