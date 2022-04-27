@@ -9,9 +9,9 @@ const useNewOrderContext = () => {
 
 
 const NewOrderContextProvider = ({children}) => {
-    const [date, setDate] = useState()
+    const [deliveryDate, setDeliveryDate] = useState()
     const handleChangeDate = (value) => {
-        setDate(value);
+        setDeliveryDate(value);
     };
 
     // store current customer and order info
@@ -60,7 +60,8 @@ const NewOrderContextProvider = ({children}) => {
         }
 
         //making sure dates are valid before entering
-        let formatDate = date
+        // possible solution for default date, set the date when businessName are picked
+        console.log(deliveryDate)
 
         setOrderInfo({
             billingAddress: billingAddress,
@@ -72,7 +73,7 @@ const NewOrderContextProvider = ({children}) => {
             deliveryMethod:'',
             editVersion:0,
             notes:'',
-            orderDates:date,
+            orderDates:'',
             orderDiscount:'',
             orderID:'',
             orderStatus:'',
@@ -80,12 +81,12 @@ const NewOrderContextProvider = ({children}) => {
             originalTotal:'',
             paymentMethod:'',
             pickupLocation:'',
-            shipOrPickDate:'',
+            shipOrPickDate:deliveryDate,
             shippingAddress:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
             salesRepId:'get it from storage when calling api',
             salesRepName:'get it from storage when calling api',
         })
-    },[currentCustomer,date])
+    },[currentCustomer,deliveryDate])
 
 
 
@@ -115,7 +116,7 @@ const NewOrderContextProvider = ({children}) => {
     return (
         <NewOrderContext.Provider
             value={{
-                date,
+                deliveryDate,
                 handleChangeDate,
                 setCurrentCustomer,
                 currentCustomer,

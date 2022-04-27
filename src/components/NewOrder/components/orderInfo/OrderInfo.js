@@ -19,7 +19,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
 export default function OrderInfo() {   
-  const {date, handleChangeDate,orderInfo, handleOrderInfo } = useNewOrderContext();
+  const {deliveryDate, handleChangeDate,orderInfo, handleOrderInfo } = useNewOrderContext();
 
 
   return (
@@ -103,8 +103,12 @@ export default function OrderInfo() {
                     <DesktopDatePicker
                         label="Shippping/Picking Date"
                         inputFormat="MM-DD-YYYY"
-                        value={date}
-                        onChange={handleChangeDate}
+                        value={deliveryDate}
+                        name='shipOrPickDate'
+                        onChange={(value) => {
+                            handleChangeDate(value)
+                            
+                        }}
                         renderInput={(params) => <TextField margin="dense" sx={{marginLeft:'0.5rem', width:'15rem'}} {...params} />}
                     />
                 </LocalizationProvider>
