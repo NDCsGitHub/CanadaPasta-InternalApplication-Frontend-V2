@@ -34,7 +34,6 @@ const NewOrderContextProvider = ({children}) => {
         })
     }
 
-
     useEffect(()=>{
 
         // making sure billing input value doesn't show up undefined before a business was selected
@@ -70,8 +69,13 @@ const NewOrderContextProvider = ({children}) => {
             salesRepId:'get it from storage when calling api',
             salesRepName:'get it from storage when calling api',
         })
+
     },[currentCustomer,deliveryDate])
 
+    // test the results, remove this later
+    useEffect(()=>{
+        console.log(orderInfo)
+    },[orderInfo])
 
     /*************************ORDER INFO: END*********************************/
 
@@ -84,7 +88,7 @@ const NewOrderContextProvider = ({children}) => {
 
 
 
-    
+
     /*************************BASKET INFO: START******************************/
 
         // basket

@@ -6,12 +6,16 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import {GiDumpling, GiSaucepan, GiFastNoodles} from 'react-icons/gi'
+import './productCatalog.css'
 
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import './productCatalog.css'
+
+
+
+
 
 
 export default function ProductCatalog() {
@@ -58,13 +62,9 @@ export default function ProductCatalog() {
             </Button>
         </Tabs>
 
-
-
-
-
-
-
-        dsad
+            
+        
+       
 
     </Card>
   )
