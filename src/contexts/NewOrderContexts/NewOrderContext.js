@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react'
+import moment from 'moment';
 
 
 const NewOrderContext = React.createContext()
@@ -59,9 +60,9 @@ const NewOrderContextProvider = ({children}) => {
             billingAddress=''
         }
 
-        //making sure dates are valid before entering
-        // possible solution for default date, set the date when businessName are picked
-        console.log(deliveryDate)
+        //today && shipOrPickDate
+        let today = moment(new Date()).format("MM-DD-YYYY")
+        let actualDeliveryDate = !deliveryDate? today : moment((deliveryDate._d)).format("MM-DD-YYYY")
 
         setOrderInfo({
             billingAddress: billingAddress,
@@ -73,15 +74,15 @@ const NewOrderContextProvider = ({children}) => {
             deliveryMethod:'',
             editVersion:0,
             notes:'',
-            orderDates:'',
+            orderDates:today,
             orderDiscount:'',
             orderID:'',
-            orderStatus:'',
+            orderStatus:'processing',
             orderTotal:'',
             originalTotal:'',
             paymentMethod:'',
             pickupLocation:'',
-            shipOrPickDate:deliveryDate,
+            shipOrPickDate:actualDeliveryDate,
             shippingAddress:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
             salesRepId:'get it from storage when calling api',
             salesRepName:'get it from storage when calling api',

@@ -87,10 +87,11 @@ export default function OrderInfo() {
             <>
                 <TextField select
                     required
-                    sx={{marginLeft:'0.5rem', width:'15rem'}}
+                    sx={{marginLeft:'0.5rem', width:'16rem'}}
                     label="Delivery Method"
                     margin="dense"
                     name='deliveryMethod'
+                    defaultValue={''}
                     onChange={(e)=>{
                         handleOrderInfo(e)
                     }}
@@ -115,10 +116,11 @@ export default function OrderInfo() {
                 
                 <TextField select
                     required
-                    sx={{marginLeft:'0.5rem', width:'15rem'}}
+                    sx={{marginLeft:'0.5rem', width:'16rem'}}
                     label="Payment Method"
                     name='paymentMethod'
                     margin="dense"
+                    defaultValue={''}
                     onChange={(e)=>{
                         handleOrderInfo(e)
                     }}
@@ -127,22 +129,52 @@ export default function OrderInfo() {
                     <MenuItem value='emt' > EMT </MenuItem>
                     <MenuItem value='monthly' > Monthly </MenuItem>
                 </TextField>
-                
-                <TextField select
-                    required
-                    sx={{marginLeft:'0.5rem', width:'15rem'}}
-                    label="Pick Up Location"
-                    name='pickuplocation'
-                    margin="dense"
-                    onChange={(e)=>{
-                        handleOrderInfo(e)
-                    }}
-                >
-                    <MenuItem value='factory1' > Factory 1 </MenuItem>
-                </TextField>
-                
+
+              
+                {(() => {
+                    switch (orderInfo.deliveryMethod) {
+                        case 'pickup':
+                            return (
+                                <TextField select
+                                required
+                                sx={{marginLeft:'0.5rem', width:'16rem'}}
+                                label="Pick Up Location"
+                                name='pickupLocation'
+                                margin="dense"
+                                defaultValue={''}
+                                onChange={(e)=>{
+                                    handleOrderInfo(e)
+                                }}
+                                >
+                                    <MenuItem value='factory1' > Factory 1 </MenuItem>
+                                </TextField>
+                            )
+
+                        case 'ship':
+                            return (
+                                <TextField required
+                                    sx={{marginLeft:'0.5rem', width:'40rem', }}
+                                    label="Shipping Address"
+                                    name='shippingAddress'
+                                    margin="dense"
+                                    value = {orderInfo.billingAddress || ''}
+                                    onChange={(e)=>{
+                                        handleOrderInfo(e)
+                                    }}
+                                />
+                            )
+
+                        default:
+                            return null
+                    }
+                })()}
                 
             </>
+
+
+
+   
+
 
 
 
