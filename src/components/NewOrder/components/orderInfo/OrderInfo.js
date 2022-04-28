@@ -133,6 +133,7 @@ export default function OrderInfo() {
               
                 {(() => {
                     switch (orderInfo.deliveryMethod) {
+                        
                         case 'pickup':
                             return (
                                 <TextField select

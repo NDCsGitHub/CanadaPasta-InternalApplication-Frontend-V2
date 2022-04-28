@@ -10,12 +10,17 @@ const useNewOrderContext = () => {
 
 
 const NewOrderContextProvider = ({children}) => {
+
+    /************************ORDER INFO : START*******************************/
+    // gets the data from date picker and save it as a Date object
     const [deliveryDate, setDeliveryDate] = useState()
     const handleChangeDate = (value) => {
         setDeliveryDate(value);
     };
 
     // store current customer and order info
+    // currentCustomer contains the date pull from businessOptions component options list, it contains raw data from the database
+    // orderInfo contains the finalized date
     const [currentCustomer, setCurrentCustomer] = useState({})    
     const [orderInfo, setOrderInfo] = useState({})
 
@@ -28,28 +33,6 @@ const NewOrderContextProvider = ({children}) => {
             [inputName]:inputValue
         })
     }
-
-    // basket
-    // const [orderBasket, setOrderBasket] = useState({
-        
-    // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     useEffect(()=>{
@@ -90,6 +73,28 @@ const NewOrderContextProvider = ({children}) => {
     },[currentCustomer,deliveryDate])
 
 
+    /*************************ORDER INFO: END*********************************/
+
+
+
+
+
+
+
+
+
+
+    
+    /*************************BASKET INFO: START******************************/
+
+        // basket
+    // const [orderBasket, setOrderBasket] = useState({
+        
+    // })
+
+
+
+    /*************************BASKET INFO: END******************************/
 
 
 
@@ -103,16 +108,19 @@ const NewOrderContextProvider = ({children}) => {
 
 
 
- 
 
 
 
 
 
-    useEffect(()=>{
-        console.log(currentCustomer)
-        console.log(orderInfo)
-    },[currentCustomer,orderInfo])
+
+    /*************************API CALL : START******************************/ 
+
+
+
+    /*************************API CALL : END********************************/
+
+
 
     return (
         <NewOrderContext.Provider

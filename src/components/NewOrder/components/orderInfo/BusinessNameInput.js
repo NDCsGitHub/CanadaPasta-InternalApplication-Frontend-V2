@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Auto from '@mui/material/Autocomplete';
 import { styled } from '@mui/material/styles';
@@ -6,9 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import {useBusinessOrderInputContext} from '../../../../contexts/NewOrderContexts/BusinessOrderInputContext'
 import {useNewOrderContext} from '../../../../contexts/NewOrderContexts/NewOrderContext'
 import MenuItem from '@mui/material/MenuItem';
-//Business Name, Customer Type, Phone #, Billing Address, 
-//Delivery Method, Shipping/Pickup Date,
-// Payment Method, Pick Up Location
+
 
 
 
@@ -29,12 +27,9 @@ export default function BusinessNameInput() {
     const {open, setOpen, options, loading} = useBusinessOrderInputContext()
     const {setCurrentCustomer} = useNewOrderContext()
     
-    const [testing, setTesting] = useState()
+    const [businessName, setBusinessName] = useState()
     
 
-    useEffect(()=>{
-        console.log(testing)
-    },[testing])
 
     return (
         <BusinessOptions
@@ -47,9 +42,9 @@ export default function BusinessNameInput() {
                 setOpen(false);
             }}
             getOptionLabel={(option) => (`${option.business_name_cn}/${option.business_name_en}` || '')}
-            value={testing}
+            value={businessName}
             onChange={(event, newValue) => {
-                setTesting(newValue.business_name_cn);
+                setBusinessName(newValue.business_name_cn);
                 setCurrentCustomer(newValue)
             }}
             options={options}
