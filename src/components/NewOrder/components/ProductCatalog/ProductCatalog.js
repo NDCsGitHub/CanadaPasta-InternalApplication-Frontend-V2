@@ -5,7 +5,7 @@ import RamenDiningIcon from '@mui/icons-material/RamenDining';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import {GiDumpling} from 'react-icons/gi'
+import {GiDumpling, GiSaucepan, GiFastNoodles} from 'react-icons/gi'
 
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -34,16 +34,13 @@ export default function ProductCatalog() {
     
 
   return (
-    <Card sx={{marginTop:'1rem', border: 'black 1px solid', }}>
+    <Card sx={{marginTop:'1rem' }}>
 
         <Tabs className='tabList' value={value} onChange={handleChange}>
-            
-            <Tab icon={<RamenDiningIcon />} label="CHEF AT HOME" />
-            <Tab icon={<RamenDiningIcon />} label="NOODLES" />
-            <Tab icon={<GiDumpling className = 'dumpIcon' />} label="Handcrafted Food" />
-            
-
-        
+            <Tab icon={<RamenDiningIcon className = 'tabIcon' />} label="NOODLES" />
+            <Tab icon={<GiFastNoodles  className = 'tabIcon' />} label="CHEF AT HOME" />
+            <Tab icon={<GiDumpling className = 'tabIcon' />} label="Handcrafted Food" />
+            <Tab icon={<GiSaucepan className = 'tabIcon' />} label="RAMEN SEASONING" />
             <Button 
                 variant="contained" 
                 size="large"     
@@ -60,6 +57,12 @@ export default function ProductCatalog() {
                 CART
             </Button>
         </Tabs>
+
+
+
+
+
+
 
         dsad
 
