@@ -119,7 +119,9 @@ export default function OrderInfo() {
                     label="Payment Method"
                     name='paymentMethod'
                     margin="dense"
-                    defaultValue={'cash'}
+                    onChange={(e)=>{
+                        handleOrderInfo(e)
+                    }}
                 >
                     <MenuItem value='cash' > Cash </MenuItem>
                     <MenuItem value='emt' > EMT </MenuItem>
@@ -132,7 +134,9 @@ export default function OrderInfo() {
                     label="Pick Up Location"
                     name='pickuplocation'
                     margin="dense"
-                    defaultValue={'factory1'}
+                    onChange={(e)=>{
+                        handleOrderInfo(e)
+                    }}
                 >
                     <MenuItem value='factory1' > Factory 1 </MenuItem>
                 </TextField>
