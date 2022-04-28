@@ -18,7 +18,7 @@ import { AccountContextProvider } from '../../contexts/AccountContext';
 import ProductList from '../ProductList/productList'
 import CustomerList from '../CustomerList/customerList'
 import {BusinessOrderInputContextProvider} from '../../contexts/NewOrderContexts/BusinessOrderInputContext'
-
+import { ProductCatalogContextProvider } from '../../contexts/NewOrderContexts/ProductCatalogContext';
 
 
 
@@ -72,11 +72,14 @@ export default function Dashboard() {
                       )
                   case 'Create Order':
                       return (
-                        <BusinessOrderInputContextProvider>
-                          <NewOrderContextProvider>
-                            <NewOrder/>
-                          </NewOrderContextProvider>
-                        </BusinessOrderInputContextProvider>
+                        <ProductCatalogContextProvider>
+                          <BusinessOrderInputContextProvider>
+                            <NewOrderContextProvider>
+                              <NewOrder/>
+                            </NewOrderContextProvider>
+                          </BusinessOrderInputContextProvider>
+                        </ProductCatalogContextProvider>
+                          
                       )
                   case 'New Customer':
                       return (

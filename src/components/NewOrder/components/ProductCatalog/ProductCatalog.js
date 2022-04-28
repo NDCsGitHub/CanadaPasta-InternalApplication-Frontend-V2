@@ -7,6 +7,7 @@ import Card from '@mui/material/Card';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import {GiDumpling, GiSaucepan, GiFastNoodles} from 'react-icons/gi'
 import './productCatalog.css'
+import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
 
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -19,19 +20,7 @@ import Container from '@mui/material/Container';
 
 
 export default function ProductCatalog() {
-
-
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-
-
-
-
-
+  const {tabValue, handleTabChange, productList} = useProductCatalogContext()
 
 
 
@@ -40,7 +29,7 @@ export default function ProductCatalog() {
   return (
     <Card sx={{marginTop:'1rem' }}>
 
-        <Tabs className='tabList' value={value} onChange={handleChange}>
+        <Tabs className='tabList' value={tabValue} onChange={handleTabChange}>
             <Tab icon={<RamenDiningIcon className = 'tabIcon' />} label="NOODLES" />
             <Tab icon={<GiFastNoodles  className = 'tabIcon' />} label="CHEF AT HOME" />
             <Tab icon={<GiDumpling className = 'tabIcon' />} label="Handcrafted Food" />
@@ -62,9 +51,16 @@ export default function ProductCatalog() {
             </Button>
         </Tabs>
 
-            
         
-       
+      
+        
+
+
+
+
+
+
+        {productList}
 
     </Card>
   )
@@ -73,25 +69,3 @@ export default function ProductCatalog() {
 
 
 
-// eslint-disable-next-line no-lone-blocks
-{/* <Card sx={{ minWidth: 275 }}>
-<CardContent>
-  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-    Word of the Day
-  </Typography>
-  <Typography variant="h5" component="div">
-    be{bull}nev{bull}o{bull}lent
-  </Typography>
-  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-    adjective
-  </Typography>
-  <Typography variant="body2">
-    well meaning and kindly.
-    <br />
-    {'"a benevolent smile"'}
-  </Typography>
-</CardContent>
-<CardActions>
-  <Button size="small">Learn More</Button>
-</CardActions>
-</Card> */}
