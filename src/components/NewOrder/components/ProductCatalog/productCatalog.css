@@ -1,0 +1,20 @@
+.cartButton{
+    border-radius: 20;
+    background-color: #fad168 !important;
+    padding: 0.5rem 1rem ;
+    font-size: 18px;
+    font-weight: bold !important;
+    color:black !important;
+    align-items: center !important;
+    align-self: center !important;
+    justify-content: flex-end !important;
+    justify-items: flex-end !important;
+    position: absolute !important;
+    right: 1rem;
+}
+
+.dumpIcon{
+    width:1.5rem !important;
+    height: 1.5rem !important;
+}
+ 

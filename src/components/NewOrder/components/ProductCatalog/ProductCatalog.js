@@ -2,15 +2,16 @@ import React from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import RamenDiningIcon from '@mui/icons-material/RamenDining';
-import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import {GiDumpling} from 'react-icons/gi'
+
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import './productCatalog.css'
 
 
 export default function ProductCatalog() {
@@ -33,33 +34,34 @@ export default function ProductCatalog() {
     
 
   return (
-    <Card sx={{marginTop:'1rem'}}>
+    <Card sx={{marginTop:'1rem', border: 'black 1px solid', }}>
 
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs className='tabList' value={value} onChange={handleChange}>
             
             <Tab icon={<RamenDiningIcon />} label="CHEF AT HOME" />
             <Tab icon={<RamenDiningIcon />} label="NOODLES" />
-            <Tab icon={<RamenDiningIcon />} label="Handcrafted Food" />
+            <Tab icon={<GiDumpling className = 'dumpIcon' />} label="Handcrafted Food" />
+            
 
+        
             <Button 
-
                 variant="contained" 
                 size="large"     
-                style={{
-                    borderRadius: 35,
-                    backgroundColor: "#ffca40",
-                    padding: "18px 36px",
-                    fontSize: "18px"
-                }}
+                className="cartButton"
                 endIcon={
-                    <ShoppingCartCheckoutIcon fontSize="large" />
+                    <ShoppingCartCheckoutIcon 
+                        fontSize="large" 
+                        sx={{
+                            width:'1.6rem', height: '1.6rem'
+                        }} 
+                    />
                 } 
             >
                 CART
             </Button>
         </Tabs>
 
-
+        dsad
 
     </Card>
   )
