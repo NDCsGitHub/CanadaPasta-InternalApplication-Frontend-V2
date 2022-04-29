@@ -12,21 +12,12 @@ import ProductCard from './ProductCard'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-
-
-
 
 
 
 export default function ProductCatalog() {
   const {tabValue, handleTabChange, productList, loading} = useProductCatalogContext()
 
-
-  
     
 
   return (

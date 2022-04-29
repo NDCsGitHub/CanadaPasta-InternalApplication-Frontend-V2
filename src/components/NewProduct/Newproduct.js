@@ -12,6 +12,7 @@ import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Grid from '@mui/material/Grid';
 import { useNewProductContext} from '../../contexts/NewProductContext'
+import MenuItem from '@mui/material/MenuItem';
 
 export default function Newproduct() {
 
@@ -26,6 +27,7 @@ export default function Newproduct() {
       product_name_en:'',
       product_name_cn:'',
       price:'',
+      product_type:'',
       description_en:'',
       description_cn:'',
       comment:'',
@@ -89,6 +91,23 @@ export default function Newproduct() {
                 value={newProductInfo.price}
                 onChange={(e)=>{handleProductInfo(e)}}
               />
+
+              <TextField select
+                required
+                size="small"
+                sx={{marginLeft:"1rem", minWidth:'13.8rem'}}
+                label="Product Type"
+                name='product_type'
+                margin="dense"
+                defaultValue={''}
+                onChange={(e)=>{handleProductInfo(e)}}
+                >
+                    <MenuItem value='noodle' > Noodle </MenuItem>
+                    <MenuItem value='chef at home' > Chef at Home </MenuItem>
+                    <MenuItem value='handcrafted food' > Handcrafted Food </MenuItem>
+                    <MenuItem value='ramen seasoning' > Ramen Seasoning </MenuItem>
+              </TextField>
+        
             </div>
           </Grid>
 

@@ -18,6 +18,7 @@ const NewProductContextProvider = ({children}) => {
         product_name_en:'',
         product_name_cn:'',
         price:'',
+        product_type:'',
         description_en:'',
         description_cn:'',
         comment:'',
@@ -40,6 +41,7 @@ const NewProductContextProvider = ({children}) => {
         params.append('product_name_en', newProductInfo.product_name_en)
         params.append('product_name_cn', newProductInfo.product_name_cn)
         params.append('price', newProductInfo.price)
+        params.append('product_type', newProductInfo.product_type)
         params.append('description_en', newProductInfo.description_en)
         params.append('description_cn', newProductInfo.description_cn)
         params.append('comment', newProductInfo.comment)

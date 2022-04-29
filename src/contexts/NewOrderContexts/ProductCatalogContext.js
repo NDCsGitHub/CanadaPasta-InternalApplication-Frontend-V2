@@ -65,11 +65,13 @@ const ProductCatalogContextProvider =({children}) => {
 
       if(respProducts.data.error === false){
         console.log(respProducts.data.data)
+        setProductList([
+          ...respProducts.data.data
+        ])
       }else{
         alert(respProducts.data.message)
       }
       
-
     }catch(error){
         console.log(error)
     }
