@@ -18,3 +18,8 @@
     height: 2rem !important;
 }
  
+.productContainer{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

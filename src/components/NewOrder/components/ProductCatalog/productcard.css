@@ -1,0 +1,10 @@
+.productCardContainer:active{
+    transform:scale(0.9);
+    transition: 0.18s;
+}
+
+.productCardContainer{
+    transform:scale(1);
+    transition: 0.18s;
+}
+

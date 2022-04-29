@@ -8,6 +8,7 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import {GiDumpling, GiSaucepan, GiFastNoodles} from 'react-icons/gi'
 import './productCatalog.css'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
+import ProductCard from './ProductCard'
 
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -23,7 +24,7 @@ export default function ProductCatalog() {
   const {tabValue, handleTabChange, productList} = useProductCatalogContext()
 
 
-
+  
     
 
   return (
@@ -52,15 +53,18 @@ export default function ProductCatalog() {
         </Tabs>
 
         
-      
-        
-
-
-
-
-
-
-        {productList}
+    
+        <div className='productContainer'>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+            <ProductCard/>
+        </div>
 
     </Card>
   )

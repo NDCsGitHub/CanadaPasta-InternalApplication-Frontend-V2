@@ -19,6 +19,21 @@ const ProductCatalogContextProvider =({children}) => {
     setTabValue(newValue)
   }
 
+  // productType 
+  const [productType, setProductType] = useState()
+  useEffect(() => {
+    if(tabValue === 0){
+      setProductType('noodle')
+    }else if(tabValue === 1){
+      setProductType('chef at home')
+    }else if(tabValue === 2){
+      setProductType('handcrafted food')
+    }else{
+      setProductType('ramen seasoning')
+    }
+  },[tabValue])
+
+
   // loader
   const [loading, setLoading] = useState(true)
 
@@ -26,36 +41,36 @@ const ProductCatalogContextProvider =({children}) => {
   const [productList, setProductList] = useState('')
 
 
+
+
+
+
+
+
   // function fetch product
-  const fetchProduct = async() =>{
-
-    // http://localhost/v1/index.php/fetch_products_of_type?product_type=noodle
+  const fetchProduct = async(productType) =>{
+    const user = JSON.parse(localStorage.getItem('user'))
+    const token = user.user.api_key
     try{
-      const respProducts = await axios.get()
-    
+      const respProducts = await axios.get(`http://localhost/v1/index.php/fetch_products_of_type?product_type=${productType}`,
+      {
+        headers:{
+            'Authorization': `${token}`,
+            'Content-Type':'application/x-www-form-urlencoded',
+            'Access-Control-Allow-Origin':'*',
+        }
+      })
+      
+      console.log(respProducts)
 
-    }catch{
-
+    }catch(error){
+        console.log(error)
     }
   }
 
-
-
-  // conditional call
-  useEffect(() => {
-
-    if(tabValue === 0){
-      setProductList('product from tab 0')
-    }else if(tabValue === 1){
-      setProductList('product from tab 1')
-    }else if(tabValue === 2){
-      setProductList('product from tab 2')
-    }else{
-      setProductList('prodcut from tab 3')
-    }
-
-
-  },[tabValue])
+  useEffect(()=>{
+    fetchProduct(productType)
+  },[productType])
 
 
 
