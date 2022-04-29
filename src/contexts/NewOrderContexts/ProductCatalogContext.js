@@ -61,6 +61,7 @@ const ProductCatalogContextProvider =({children}) => {
         }
       })
       
+      setLoading(false)
       console.log(respProducts)
 
     }catch(error){
