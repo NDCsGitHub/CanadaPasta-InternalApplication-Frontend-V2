@@ -32,9 +32,6 @@ export default function ProductCatalog() {
 
 
 
-  const handleClick = () =>{
-      console.log('hej works')
-  }
 
   return (
     <Card sx={{marginTop:'1rem' }}>
@@ -71,7 +68,7 @@ export default function ProductCatalog() {
         ):(
             <div className='productContainer'>
                 {productList.map((product, index)=>{
-                    return <ProductCard key={index} {...product} onClick={(e)=>{handleClick()}} />
+                    return <ProductCard key={index} {...product} />
                 })}
             </div>
         )}
