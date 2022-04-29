@@ -62,7 +62,13 @@ const ProductCatalogContextProvider =({children}) => {
       })
       
       setLoading(false)
-      console.log(respProducts)
+
+      if(respProducts.data.error === false){
+        console.log(respProducts.data.data)
+      }else{
+        alert(respProducts.data.message)
+      }
+      
 
     }catch(error){
         console.log(error)
@@ -82,6 +88,7 @@ const ProductCatalogContextProvider =({children}) => {
         tabValue,
         handleTabChange,
         productList,
+        loading,
       }}
 
     >

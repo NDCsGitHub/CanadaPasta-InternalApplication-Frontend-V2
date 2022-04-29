@@ -23,3 +23,14 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.loaderContainer{
+    display: flex;
+    min-height: 26rem;  
+    justify-content: center;
+    align-items: center;
+}
+
+.basketLoader{
+    color:#ffca40 !important;
+}

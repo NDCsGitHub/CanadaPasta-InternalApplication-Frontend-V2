@@ -9,6 +9,8 @@ import {GiDumpling, GiSaucepan, GiFastNoodles} from 'react-icons/gi'
 import './productCatalog.css'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
 import ProductCard from './ProductCard'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -21,7 +23,7 @@ import Container from '@mui/material/Container';
 
 
 export default function ProductCatalog() {
-  const {tabValue, handleTabChange, productList} = useProductCatalogContext()
+  const {tabValue, handleTabChange, productList, loading} = useProductCatalogContext()
 
 
   
@@ -53,18 +55,23 @@ export default function ProductCatalog() {
         </Tabs>
 
         
-    
-        <div className='productContainer'>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-        </div>
+        {loading === true? (
+            <Box className='loaderContainer'>
+                <CircularProgress thickness={5} size='10rem' className='basketLoader' />
+            </Box>
+        ):(
+            <div className='productContainer'>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
+            </div>
+        )}
 
     </Card>
   )
