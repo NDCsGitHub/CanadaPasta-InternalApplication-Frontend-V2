@@ -19,6 +19,7 @@ const ProductCatalogContextProvider =({children}) => {
     setTabValue(newValue)
   }
 
+
   // productType 
   const [productType, setProductType] = useState('')
   useEffect(() => {
@@ -35,21 +36,16 @@ const ProductCatalogContextProvider =({children}) => {
 
 
   // loader
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(1)
+
 
   //active product list to be mapped
   const [productList, setProductList] = useState([])
 
 
-
-
-
-
-
-
   // function fetch product
   const fetchProduct = async(productType) =>{
-    setLoading(true)
+    setLoading(1)
     const user = JSON.parse(localStorage.getItem('user'))
     const token = user.user.api_key
     try{
@@ -62,7 +58,7 @@ const ProductCatalogContextProvider =({children}) => {
         }
       })
       
-      setLoading(false)
+      setLoading(0)
 
       if(respProducts.data.error === false){
         console.log(respProducts.data.data)
@@ -77,7 +73,7 @@ const ProductCatalogContextProvider =({children}) => {
         console.log(error)
     }
   }
-
+  // 
   useEffect(()=>{
     fetchProduct(productType)
   },[productType])

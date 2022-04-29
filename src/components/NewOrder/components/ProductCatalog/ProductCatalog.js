@@ -9,16 +9,32 @@ import {GiDumpling, GiSaucepan, GiFastNoodles} from 'react-icons/gi'
 import './productCatalog.css'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
 import ProductCard from './ProductCard'
+import { styled } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
 
-
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      right: -5,
+      top: -5,
+      border: `1px solid ${theme.palette.background.paper}`,
+      padding: '0 0px',
+    },
+  }));
 
 
 export default function ProductCatalog() {
   const {tabValue, handleTabChange, productList, loading} = useProductCatalogContext()
 
-    
+
+  
+
+
+
+  const handleClick = () =>{
+      console.log('hej works')
+  }
 
   return (
     <Card sx={{marginTop:'1rem' }}>
@@ -33,27 +49,29 @@ export default function ProductCatalog() {
                 size="large"     
                 className="cartButton"
                 endIcon={
-                    <ShoppingCartCheckoutIcon 
-                        fontSize="large" 
-                        sx={{
-                            width:'1.6rem', height: '1.6rem'
-                        }} 
-                    />
+                    <StyledBadge badgeContent={10} color="primary">
+                        <ShoppingCartCheckoutIcon 
+                            fontSize="large" 
+                            sx={{
+                                width:'1.6rem', height: '1.6rem'
+                            }} 
+                            />
+                    </StyledBadge>
                 } 
             >
                 CART
             </Button>
         </Tabs>
 
-        
-        {loading === true? (
+
+        {loading === 1? (
             <Box className='loaderContainer'>
                 <CircularProgress thickness={5} size='10rem' className='basketLoader' />
             </Box>
         ):(
             <div className='productContainer'>
                 {productList.map((product, index)=>{
-                    return <ProductCard key={index} {...product}  />
+                    return <ProductCard key={index} {...product} onClick={(e)=>{handleClick()}} />
                 })}
             </div>
         )}
