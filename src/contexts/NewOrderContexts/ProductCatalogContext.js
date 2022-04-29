@@ -20,7 +20,7 @@ const ProductCatalogContextProvider =({children}) => {
   }
 
   // productType 
-  const [productType, setProductType] = useState()
+  const [productType, setProductType] = useState('')
   useEffect(() => {
     if(tabValue === 0){
       setProductType('noodle')
@@ -38,7 +38,7 @@ const ProductCatalogContextProvider =({children}) => {
   const [loading, setLoading] = useState(true)
 
   //active product list to be mapped
-  const [productList, setProductList] = useState('')
+  const [productList, setProductList] = useState([])
 
 
 
@@ -49,6 +49,7 @@ const ProductCatalogContextProvider =({children}) => {
 
   // function fetch product
   const fetchProduct = async(productType) =>{
+    setLoading(true)
     const user = JSON.parse(localStorage.getItem('user'))
     const token = user.user.api_key
     try{

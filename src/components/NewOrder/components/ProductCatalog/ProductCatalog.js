@@ -52,15 +52,9 @@ export default function ProductCatalog() {
             </Box>
         ):(
             <div className='productContainer'>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                {productList.map((product, index)=>{
+                    return <ProductCard key={index} {...product}  />
+                })}
             </div>
         )}
 

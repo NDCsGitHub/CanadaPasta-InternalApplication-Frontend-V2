@@ -11,17 +11,20 @@ import './productcard.css'
 
 
 
-export default function ProductCard() {
+export default function ProductCard(props) {
 
-
+  const {product_name_en, product_name_cn, price,} = props
 
 
 
   return (
+
+
+
     <Card 
         className = 'productCardContainer'
         sx={{ 
-            maxWidth: 200, 
+            maxWidth: 210, 
             borderRadius:'1rem',
             margin:'1rem' 
         }}
@@ -30,28 +33,28 @@ export default function ProductCard() {
 
             <CardMedia
                 component="img"
-                height="140"
+                height="100"
                 image={noodle2}
             />
             
             <CardContent>
 
                 <Typography
+                    className='productTitle'
                     gutterBottom 
-                    variant="h6" 
                     component="div"
                     align='center'
                 >
 
-                    Product Name Prop
+                    {`${product_name_cn}/${product_name_en}`}
                 </Typography>
 
                 <Typography 
-                    variant="body2" 
+                    className='productPrice'
                     color="#ffca40"
                     align='center'
                 >
-                    Product Price prop
+                    {`$${price}`}
                 </Typography>
 
             </CardContent>

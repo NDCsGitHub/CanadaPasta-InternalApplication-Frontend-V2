@@ -8,3 +8,12 @@
     transition: 0.18s;
 }
 
+.productTitle{
+    font-weight: 800 !important;
+    font-size: 1rem !important ;
+}
+
+.productPrice{
+    font-weight: 800 !important;
+    font-size: 2rem !important;
+}
