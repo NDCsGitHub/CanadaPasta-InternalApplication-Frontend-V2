@@ -13,6 +13,8 @@ const useProductCatalogContext = () =>{
 
 const ProductCatalogContextProvider =({children}) => {
 
+  /***********************PRODUCT CARD START**************************/
+
   // tab selector
   const [tabValue, setTabValue] = useState(0)
   const handleTabChange = (event, newValue) => {
@@ -57,9 +59,7 @@ const ProductCatalogContextProvider =({children}) => {
             'Access-Control-Allow-Origin':'*',
         }
       })
-      
       setLoading(0)
-
       if(respProducts.data.error === false){
         console.log(respProducts.data.data)
         setProductList([
@@ -68,16 +68,28 @@ const ProductCatalogContextProvider =({children}) => {
       }else{
         alert(respProducts.data.message)
       }
-      
     }catch(error){
         console.log(error)
     }
   }
-  
+
   // 
   useEffect(()=>{
     fetchProduct(productType)
   },[productType])
+
+/*********************************PRODUCT CARD END****************************************/
+
+
+
+
+
+
+
+
+
+
+
 
 
 

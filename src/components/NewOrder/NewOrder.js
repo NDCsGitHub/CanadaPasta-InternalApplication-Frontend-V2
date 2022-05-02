@@ -13,9 +13,13 @@ export default function NewOrder() {
 
     return (
     <>
-            <OrderInfo/>
+        <OrderInfo/>
+        <ProductCatalog/>
 
-            <ProductCatalog/>
+
+        {/* ternary statement to control toggle right model*/}
+
+
     </>
     )
 }

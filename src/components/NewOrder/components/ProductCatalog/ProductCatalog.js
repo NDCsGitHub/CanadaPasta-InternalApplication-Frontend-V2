@@ -46,7 +46,7 @@ export default function ProductCatalog() {
                 size="large"     
                 className="cartButton"
                 endIcon={
-                    <StyledBadge badgeContent={10} color="primary">
+                    <StyledBadge badgeContent={2} color="primary">
                         <ShoppingCartCheckoutIcon 
                             fontSize="large" 
                             sx={{
