@@ -1,6 +1,4 @@
 import React from 'react'
-
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,16 +6,19 @@ import Typography from '@mui/material/Typography';
 import {CardActionArea } from '@mui/material';
 import noodle2 from '../../../../img/noodle2.jpg'
 import './productcard.css'
+import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
 
 
 
 export default function ProductCard(props) {
+    
+  const {setActiveModel, setOpenModel} = useProductCatalogContext()
+  const {product_name_en, product_name_cn, price} = props
 
-  const {product_name_en, product_name_cn, price,} = props
 
-
-  const handleClick = () =>{
-    console.log('hej works')
+  const handleClick = (e) =>{
+    setActiveModel(props)
+    setOpenModel(true)
   }   
 
   return (
@@ -31,7 +32,7 @@ export default function ProductCard(props) {
             borderRadius:'1rem',
             margin:'1rem' 
         }}
-        onClick={(e)=>{handleClick()}}
+        onClick={(e)=>{handleClick(e)}}
     >
         <CardActionArea>
 

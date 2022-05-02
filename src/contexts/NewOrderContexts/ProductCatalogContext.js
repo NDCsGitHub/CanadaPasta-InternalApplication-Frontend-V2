@@ -92,6 +92,17 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 
+/**************************PRODUCT SELECTION OPTION MODEL START***************************/
+  const [activeModel, setActiveModel] = useState()
+  const [openModel, setOpenModel] = useState(false);
+  const [basketItemCount, setBasketItemCount] = useState('')
+  useEffect(() => {
+    console.log(activeModel)
+  },[activeModel])
+
+
+
+/**************************PRODUCT SELECTION OPTION MODEL END***************************/
 
 
 
@@ -103,6 +114,10 @@ const ProductCatalogContextProvider =({children}) => {
         handleTabChange,
         productList,
         loading,
+        setActiveModel,
+        activeModel,
+        openModel,
+        setOpenModel,
       }}
 
     >

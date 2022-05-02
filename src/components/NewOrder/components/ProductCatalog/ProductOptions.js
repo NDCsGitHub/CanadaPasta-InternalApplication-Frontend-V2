@@ -1,23 +1,64 @@
 import React from 'react'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
-
-
-
-
-
+// import { Drawer, Animation} from 'rsuite';
+import './productoption.css'
+import Drawer from '@mui/material/Drawer';
+  
 
 export default function ProductOptions() {
 
-  const {} = useProductCatalogContext()
+  const {openModel, setOpenModel} = useProductCatalogContext()
 
 
+
+  function toggleDrawer(e){
+
+    setOpenModel(false)
+  }
 
   return (
 
+    <Drawer
+        className="productOptionDrawer"
+        anchor='right'
+        open = {true}
+        onClose={(e)=>toggleDrawer(e)}
+        transitionDuration={3}
+    >
 
-    <div>ProductOptions</div>
+    <h1>dsadsadasd</h1>
+        
+    </Drawer>
 
+  );
 
-
-  )
 }
+
+
+
+
+
+
+// <Animation.Slide 
+// in={openModel} 
+// placement='right'
+// >
+// <Drawer 
+//     className ='productOptionDrawer'
+//     size='sm' 
+//     placement='right' 
+//     open={openModel} 
+//     onClose={() => setOpenModel(false)}
+// >
+
+
+//     <Drawer.Body>
+
+//     </Drawer.Body>
+
+
+// </Drawer>
+// </Animation.Slide>  
+
+
+
