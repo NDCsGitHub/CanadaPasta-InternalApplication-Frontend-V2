@@ -77,10 +77,7 @@ const ProductCatalogContextProvider =({children}) => {
   useEffect(()=>{
     fetchProduct(productType)
   },[productType])
-
-
-
-
+  
   return(
     <ProductCatalogContext.Provider
       value={{
