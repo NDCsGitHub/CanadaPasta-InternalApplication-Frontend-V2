@@ -73,6 +73,7 @@ const ProductCatalogContextProvider =({children}) => {
         console.log(error)
     }
   }
+  
   // 
   useEffect(()=>{
     fetchProduct(productType)
@@ -81,7 +82,8 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 
-  
+
+
   return(
     <ProductCatalogContext.Provider
       value={{
