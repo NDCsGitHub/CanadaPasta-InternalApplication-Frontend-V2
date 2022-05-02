@@ -16,13 +16,14 @@ export default function ProductCard(props) {
   const {product_name_en, product_name_cn, price} = props
 
 
-  const handleClick = (e) =>{
+
+  const handleClick = () =>{
     setActiveModel(props)
     setOpenModel(true)
   }   
 
-  return (
 
+  return (
 
 
     <Card 
@@ -32,7 +33,9 @@ export default function ProductCard(props) {
             borderRadius:'1rem',
             margin:'1rem' 
         }}
-        onClick={(e)=>{handleClick(e)}}
+        onClick={()=>{
+            handleClick()
+        }}
     >
         <CardActionArea>
 

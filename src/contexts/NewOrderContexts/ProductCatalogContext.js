@@ -96,9 +96,9 @@ const ProductCatalogContextProvider =({children}) => {
   const [activeModel, setActiveModel] = useState()
   const [openModel, setOpenModel] = useState(false);
   const [basketItemCount, setBasketItemCount] = useState('')
-  useEffect(() => {
-    console.log(activeModel)
-  },[activeModel])
+  
+
+
 
 
 

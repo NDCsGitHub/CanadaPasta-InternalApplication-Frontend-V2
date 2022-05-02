@@ -5,14 +5,13 @@ import './productoption.css'
 import Drawer from '@mui/material/Drawer';
   
 
-export default function ProductOptions() {
+export default function ProductOptions( ) {
 
   const {openModel, setOpenModel} = useProductCatalogContext()
 
 
 
   function toggleDrawer(e){
-
     setOpenModel(false)
   }
 
@@ -21,9 +20,9 @@ export default function ProductOptions() {
     <Drawer
         className="productOptionDrawer"
         anchor='right'
-        open = {true}
+        open = {openModel}
         onClose={(e)=>toggleDrawer(e)}
-        transitionDuration={3}
+        variant = 'temporary'
     >
 
     <h1>dsadsadasd</h1>

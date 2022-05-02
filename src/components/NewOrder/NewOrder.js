@@ -5,12 +5,12 @@ import ProductCatalog from './components/ProductCatalog/ProductCatalog'
 // import noodle2 from '../../img/noodle2.jpg'
 import ProductOptions from './components/ProductCatalog/ProductOptions'
 import { useProductCatalogContext } from '../../contexts/NewOrderContexts/ProductCatalogContext'
-
+import Test from './components/ProductCatalog/Test'
 
 
 export default function NewOrder() {
 
-    const { openModel} = useProductCatalogContext()
+    const {openModel} = useProductCatalogContext()
 
 
 
@@ -24,7 +24,7 @@ export default function NewOrder() {
         {/* ternary statement to control toggle right model*/}
 
 
-        {openModel&&   <ProductOptions/>}
+        {openModel&& <Test/>}
 
 
 
