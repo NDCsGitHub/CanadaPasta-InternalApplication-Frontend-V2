@@ -2,11 +2,13 @@
     margin-right: 15rem !important;
 }
 
-.BUTTON{
-    /* margin-left:50rem !important;; */
-}
+
 
 
 .productOptionDrawer{
     border: 1rem !important;
+}
+
+.drawerPaper{
+    justify-content: center !important;
 }

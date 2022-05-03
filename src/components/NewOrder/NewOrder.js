@@ -49,10 +49,9 @@ export default function NewOrder() {
                 sx={{
                     width:600,
                     padding:1,
-                
                 }}
             >
-                
+
                 <ProductOptions/>
 
             </Box>
