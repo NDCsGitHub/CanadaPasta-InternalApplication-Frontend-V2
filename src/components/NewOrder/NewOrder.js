@@ -6,6 +6,9 @@ import ProductCatalog from './components/ProductCatalog/ProductCatalog'
 import ProductOptions from './components/ProductCatalog/ProductOptions'
 import { useProductCatalogContext } from '../../contexts/NewOrderContexts/ProductCatalogContext'
 import Drawer from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
+
+
 
 
 export default function NewOrder() {
@@ -33,13 +36,27 @@ export default function NewOrder() {
             open = {openModel}
             onClose={(e)=>toggleDrawer(e)}
             variant = 'temporary'
+            PaperProps={{
+                square:false,
+                sx:{
+                    borderRadius:'30px 0 0 20px',
+                }
+            }}
+    
         >
 
-            <h1>dsadsadasd</h1>
-            
+            <Box 
+                sx={{
+                    width:600,
+                    padding:1,
+                
+                }}
+            >
+                
+                <ProductOptions/>
+
+            </Box>
         </Drawer>
-
-
 
     </>
     )

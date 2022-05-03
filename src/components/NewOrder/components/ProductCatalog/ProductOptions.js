@@ -1,50 +1,28 @@
 import React from 'react'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
 import './productoption.css'
+import noodle2 from '../../../../img/noodle2.jpg'
+
 
   
 
 export default function ProductOptions( ) {
-
-  const {openModel, setOpenModel} = useProductCatalogContext()
-
+  
 
 
   return (
-
- 
-    <div>hello</div>
+    <>
 
 
+      <img src={noodle2} alt="Girl in a jacket" width="200" height="200" /> 
+
+
+    </>
   );
 
+
+
 }
-
-
-
-
-
-
-// <Animation.Slide 
-// in={openModel} 
-// placement='right'
-// >
-// <Drawer 
-//     className ='productOptionDrawer'
-//     size='sm' 
-//     placement='right' 
-//     open={openModel} 
-//     onClose={() => setOpenModel(false)}
-// >
-
-
-//     <Drawer.Body>
-
-//     </Drawer.Body>
-
-
-// </Drawer>
-// </Animation.Slide>  
 
 
 
