@@ -6,8 +6,13 @@ import noodle2 from '../../../../img/noodle2.jpg'
 
   
 
-export default function ProductOptions( ) {
-  
+ export default function ProductOptions( ) {
+
+  const {activeModel} = useProductCatalogContext()
+
+
+  console.log(activeModel)
+
 
 
   return (
