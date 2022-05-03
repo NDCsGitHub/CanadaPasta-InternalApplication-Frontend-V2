@@ -104,9 +104,6 @@ const ProductCatalogContextProvider =({children}) => {
 
 /**************************PRODUCT SELECTION OPTION MODEL END***************************/
 
-
-
-
   return(
     <ProductCatalogContext.Provider
       value={{
@@ -125,7 +122,6 @@ const ProductCatalogContextProvider =({children}) => {
     </ProductCatalogContext.Provider>
   )
 }
-
 
 
 

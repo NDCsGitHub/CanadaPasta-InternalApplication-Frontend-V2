@@ -22,6 +22,7 @@ export default function ProductCard(props) {
   }   
 
 
+
   return (
 
 
@@ -64,7 +65,6 @@ export default function ProductCard(props) {
                 </Typography>
 
             </CardContent>
-
 
         </CardActionArea>
     </Card>
