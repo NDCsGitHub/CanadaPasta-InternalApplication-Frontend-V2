@@ -16,7 +16,6 @@ export default function ProductCard(props) {
   const {product_name_en, product_name_cn, price} = props
 
 
-
   const handleClick = () =>{
     setActiveModel(props)
     setOpenModel(true)

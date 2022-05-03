@@ -5,14 +5,16 @@ import ProductCatalog from './components/ProductCatalog/ProductCatalog'
 // import noodle2 from '../../img/noodle2.jpg'
 import ProductOptions from './components/ProductCatalog/ProductOptions'
 import { useProductCatalogContext } from '../../contexts/NewOrderContexts/ProductCatalogContext'
-import Test from './components/ProductCatalog/Test'
+import Drawer from '@mui/material/Drawer';
 
 
 export default function NewOrder() {
 
-    const {openModel} = useProductCatalogContext()
+    const {openModel, setOpenModel} = useProductCatalogContext()
 
-
+    function toggleDrawer(e){
+        setOpenModel((prev) => !prev)
+    }
 
     return (
     <>
@@ -24,7 +26,18 @@ export default function NewOrder() {
         {/* ternary statement to control toggle right model*/}
 
 
-        {openModel&& <Test/>}
+        
+        <Drawer
+            className="productOptionDrawer"
+            anchor='right'
+            open = {openModel}
+            onClose={(e)=>toggleDrawer(e)}
+            variant = 'temporary'
+        >
+
+            <h1>dsadsadasd</h1>
+            
+        </Drawer>
 
 
 

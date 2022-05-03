@@ -1,8 +1,7 @@
 import React from 'react'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
-// import { Drawer, Animation} from 'rsuite';
 import './productoption.css'
-import Drawer from '@mui/material/Drawer';
+
   
 
 export default function ProductOptions( ) {
@@ -11,23 +10,11 @@ export default function ProductOptions( ) {
 
 
 
-  function toggleDrawer(e){
-    setOpenModel(false)
-  }
-
   return (
 
-    <Drawer
-        className="productOptionDrawer"
-        anchor='right'
-        open = {openModel}
-        onClose={(e)=>toggleDrawer(e)}
-        variant = 'temporary'
-    >
+ 
+    <div>hello</div>
 
-    <h1>dsadsadasd</h1>
-        
-    </Drawer>
 
   );
 
