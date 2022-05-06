@@ -103,7 +103,7 @@ export default function OrderInfo() {
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                     <DesktopDatePicker
                         label="Shippping/Picking Date"
-                        inputFormat="MM-DD-YYYY"
+                        inputFormat="MM/DD/YYYY"
                         value={deliveryDate}
                         name='shipOrPickDate'
                         onChange={(value) => {
