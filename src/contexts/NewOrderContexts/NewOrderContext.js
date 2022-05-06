@@ -92,9 +92,9 @@ const NewOrderContextProvider = ({children}) => {
     /*************************BASKET INFO: START******************************/
 
         // basket
-    // const [orderBasket, setOrderBasket] = useState({
+    const [orderBasket, setOrderBasket] = useState({
         
-    // })
+    })
 
 
 
@@ -135,6 +135,8 @@ const NewOrderContextProvider = ({children}) => {
                 currentCustomer,
                 orderInfo,
                 handleOrderInfo,
+                orderBasket,
+                setOrderBasket,
             }}
         >
 
