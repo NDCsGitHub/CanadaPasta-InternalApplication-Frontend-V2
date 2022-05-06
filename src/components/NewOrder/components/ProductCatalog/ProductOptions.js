@@ -8,18 +8,37 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import {useNewOrderContext} from '../../../../contexts/NewOrderContexts/NewOrderContext'
+import TextField from '@mui/material/TextField';
 
-
-const Item = styled(Paper)(({ theme }) => ({
+const SubTitle = styled(Typography)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
+  fontSize: '1.3rem',
   padding: theme.spacing(1),
   textAlign: 'center',
-  color: theme.palette.text.secondary,
+  color: 'black',
+  fontWeight: 'bold',
+}));
+
+const Quantity = styled(Typography)(({ theme }) => ({
+  fontSize: '1.3rem',
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: 'black',
+  fontWeight: 'bold',
+}));
+ 
+
+const IncDecBut = styled(Button)(({ theme }) => ({
+  ...theme.typography.body2,
+  fontSize: '1.3rem',
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: 'black',
+  fontWeight: 'bold'
 }));
 
   
@@ -86,47 +105,76 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-      <Grid container className='gridContainer' spacing={2}>
+      <Grid container className='gridContainer' spacing={1}>
 
-
-        <Grid item xs={8}>
-          <Typography>
+        <Grid item xs={6}>
+          <SubTitle>
             Quantity
-          </Typography>
-        </Grid>
-
-        <Grid item xs={4}>
-          <Typography>
-            Increase and decrease
-          </Typography>
+          </SubTitle>
         </Grid>
 
 
-        <Grid item xs={8}>
-          <Typography>
-            discount
-          </Typography>
+        <Grid item xs={1.5}>
+          <IncDecBut>-</IncDecBut>
         </Grid>
 
-        <Grid item xs={4}>
-          discount input
+        <Grid item xs={1.5} >
+          <Quantity className='quantityInput'>
+            132
+          </Quantity>
+        </Grid>
+
+        <Grid item xs={1.5}>
+          <IncDecBut>+</IncDecBut>
+        </Grid>
+
+
+
+
+
+        <Grid item xs={6}>
+          <SubTitle
+            align='center'
+          >
+            Discount
+          </SubTitle>
+        </Grid>
+
+        <Grid item xs={4.5}>
+          <TextField
+            hiddenLabel
+            id="filled-hidden-label-small"
+            defaultValue="Small"
+            variant="filled"
+            size="small"
+          />
         </Grid>
 
  
-        <Grid item xs={8}>
-          subtotal
+        <Grid item xs={6}>
+          <SubTitle
+            align='center'
+          >
+            Subtotal
+          </SubTitle>
         </Grid>
 
-        <Grid item xs={4}>
-          subtotal
+        <Grid item xs={4.5}>
+          <Typography
+            align='center'
+          >
+            subtotal
+          </Typography>
         </Grid>
+
+
 
 
       </Grid>
 
 
-      <Button variant="contained" endIcon={<SendIcon />}>
-        Send
+      <Button className='addToBasketButton' variant="contained" endIcon={<SendIcon />}>
+        Add to Order
       </Button>
 
 

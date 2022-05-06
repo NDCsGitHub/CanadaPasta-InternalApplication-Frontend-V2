@@ -3,7 +3,6 @@
 }
 
 .optionDetailContainer{
-    border:black solid 1px;
     margin: 4rem 1rem 1rem 1rem;
     display: flex;
     justify-content: center;
@@ -15,4 +14,21 @@
     border-radius: 50%;
 }
 
+.inputContainer{
+    display: fled;
+    flex-direction: row !important;
+}
 
+.quantityInput{
+    justify-content: center;
+    align-items: center;
+
+}
+
+.addToBasketButton{
+    margin-top: 1rem !important;
+    background-color: #ffca40 !important;
+    color:black !important;
+    font-weight: bold !important;
+    width: 24rem;
+}
