@@ -22,8 +22,6 @@ export default function App() {
     <Router>
       <Routes>
 
-
-
         <Route 
           path="/"
           element={
@@ -32,8 +30,6 @@ export default function App() {
             </HomeContextProvider>
           }
         />
-
-
 
         <Route
           path='/dashboard'
@@ -45,8 +41,6 @@ export default function App() {
             </PrivateRoute>
           }
         />
-
-
 
       </Routes>
     </Router>
