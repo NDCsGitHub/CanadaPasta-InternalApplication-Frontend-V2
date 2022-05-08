@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 
 export default function NewOrder() {
 
+    // need to include open drawer here along with its state, otherwise animation would not work.
     const {openModel, setOpenModel} = useProductCatalogContext()
 
     function toggleDrawer(e){
