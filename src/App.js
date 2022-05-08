@@ -16,6 +16,7 @@ import PrivateRoute from './components/PrivateRoute.js';
 
 export default function App() {
   
+  // add motionframer in later when time allowed
 
   return (
     <Router>
