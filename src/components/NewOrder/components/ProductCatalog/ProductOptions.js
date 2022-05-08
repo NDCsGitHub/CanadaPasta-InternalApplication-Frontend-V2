@@ -57,8 +57,6 @@ const IncDecBut = styled(Button)(({ theme }) => ({
   return (
     <div className ='optionDetailContainer'>
 
-      {/* <img className='product' src={noodle2} alt="Girl in a jacket" width="200" height="200" />  */}
-
       <Card 
         className = 'productOptionContainer'
         sx={{ 
@@ -104,6 +102,7 @@ const IncDecBut = styled(Button)(({ theme }) => ({
 
 
 
+      {/* consider moving the actual info section out to another component */}
 
       <Grid container className='gridContainer' spacing={1}>
 

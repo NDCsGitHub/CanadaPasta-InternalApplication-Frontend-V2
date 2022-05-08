@@ -29,8 +29,7 @@ export default function NewOrder() {
 
         {/* ternary statement to control toggle right model*/}
 
-
-        
+    
         <Drawer
             className="productOptionDrawer"
             anchor='right'
@@ -43,7 +42,6 @@ export default function NewOrder() {
                     borderRadius:'30px 0 0 20px',
                 }
             }}
-    
         >
 
             <Box 
