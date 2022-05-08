@@ -16,11 +16,13 @@ import PrivateRoute from './components/PrivateRoute.js';
 
 export default function App() {
   
-  // add motionframer in later when time allowed
+  // add motionframer in later when time allowed, will need to use react router v6 and location hook
 
   return (
     <Router>
       <Routes>
+
+
 
         <Route 
           path="/"
@@ -30,6 +32,8 @@ export default function App() {
             </HomeContextProvider>
           }
         />
+
+
 
         <Route
           path='/dashboard'
