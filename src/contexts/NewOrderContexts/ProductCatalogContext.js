@@ -110,7 +110,7 @@ const ProductCatalogContextProvider =({children}) => {
     
     let total = quantity * (discount/100) * activeModel.price;
 
-    setSubtotal(total)
+    setSubtotal( (Math.round(total * 100) / 100).toFixed(2) )
     
   },[quantity,discount, activeModel])
 
