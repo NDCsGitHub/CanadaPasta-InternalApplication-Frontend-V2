@@ -40,7 +40,8 @@ const Quantity = styled(Typography)(({ theme }) => ({
 
 export default function ProductOptionDetail() {
 
-  const {quantity, discount, subTotal} = useProductCatalogContext()
+  const {quantity, discount, subTotal, setQuantity, setDiscount} = useProductCatalogContext()
+  
 
 
 
@@ -63,7 +64,7 @@ export default function ProductOptionDetail() {
             className='decrementButton'
             variant="contained" 
             onClick = {(e) => {
-                console.log("decrement")
+                quantity > 0 && setQuantity((prev)=> prev - 1)
             }}
           >-</Button>
         </Grid>
@@ -78,8 +79,8 @@ export default function ProductOptionDetail() {
           <Button
             className='incrementButton'
             variant="contained" 
-            onClick = {(e) => {
-                console.log("increment")
+            onClick = {() => {
+                setQuantity((prev)=> prev+1)
             }}
           >+</Button>
         </Grid>
@@ -97,9 +98,17 @@ export default function ProductOptionDetail() {
         <Grid item xs={4.5}>
           <TextField
             hiddenLabel
+            type='number'
             variant="filled"
             size="small"
             value = {discount}
+            InputProps={{ inputProps: { min: 0, max: 100 } }}
+            onChange={(e) => {
+
+                if (e.target.value > 100) e.target.value = 100;
+                if (e.target.value < 0) e.target.value = 0;
+                setDiscount(e.target.value)
+            }}
           />
           
           

@@ -105,6 +105,12 @@ const ProductCatalogContextProvider =({children}) => {
   const [subTotal, setSubtotal] = useState(0)
 
 
+  useEffect(()=>{
+
+    console.log(activeModel)
+
+    
+  },[quantity,discount])
 
   // handle add to basket
   function handleAdd(){
@@ -113,7 +119,7 @@ const ProductCatalogContextProvider =({children}) => {
     
   }
   
-  
+
 
 
 
@@ -134,7 +140,9 @@ const ProductCatalogContextProvider =({children}) => {
         setBasketItemCount,
         handleAdd,
         quantity,
-        discount, 
+        setQuantity,
+        discount,
+        setDiscount, 
         subTotal,
       }}
 
