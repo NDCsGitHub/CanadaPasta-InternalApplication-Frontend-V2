@@ -104,7 +104,6 @@ export default function ProductOptionDetail() {
             value = {discount}
             InputProps={{ inputProps: { min: 0, max: 100 } }}
             onChange={(e) => {
-
                 if (e.target.value > 100) e.target.value = 100;
                 if (e.target.value < 0) e.target.value = 0;
                 setDiscount(e.target.value)
