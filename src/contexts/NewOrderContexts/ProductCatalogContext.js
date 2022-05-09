@@ -93,6 +93,9 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 /**************************PRODUCT SELECTION OPTION MODEL START***************************/
+  // basket Item
+  const [basket, setBasket] = useState([])
+
   // basketCount
   const [basketItemCount, setBasketItemCount] = useState(0)
 
@@ -100,25 +103,30 @@ const ProductCatalogContextProvider =({children}) => {
   const [activeModel, setActiveModel] = useState({})
   const [openModel, setOpenModel] = useState(false);
 
-
+  // currrent selected item info
   const [quantity, setQuantity] = useState(0)
   const [discount, setDiscount] = useState(100)
   const [subTotal, setSubtotal] = useState(0)
 
-
   useEffect(()=>{
-    
     let total = quantity * (discount/100) * activeModel.price;
-
     setSubtotal( (Math.round(total * 100) / 100).toFixed(2) )
-    
   },[quantity,discount, activeModel])
 
   // handle add to basket
   function handleAdd(){
+
+    setBasket({
+      ...basket,
+      
+    })
+
+
     setBasketItemCount((prev) => prev + 1)
     setOpenModel(false)
-    
+    setQuantity(0)
+    setDiscount(100)
+    setSubtotal(0)
   }
   
 

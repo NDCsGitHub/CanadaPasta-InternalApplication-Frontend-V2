@@ -46,7 +46,7 @@ export default function NewOrder() {
 
             <Box 
                 sx={{
-                    width:600,
+                    width:500,
                     padding:1,
                 }}
             >

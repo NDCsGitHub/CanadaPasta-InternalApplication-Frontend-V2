@@ -53,7 +53,7 @@ export default function ProductOptionDetail() {
 
       <Grid container className='gridContainer' spacing={1}>
 
-        <Grid item xs={6}>
+        <Grid item xs={5.5}>
           <SubTitle>
             Quantity
           </SubTitle>
@@ -87,7 +87,7 @@ export default function ProductOptionDetail() {
 
 
 
-        <Grid item xs={6}>
+        <Grid item xs={5.5}>
           <SubTitle
             align='center'
           >
@@ -114,7 +114,7 @@ export default function ProductOptionDetail() {
 
 
 
-        <Grid item xs={6}>
+        <Grid item xs={5.5}>
           <SubTitle
             align='center'
           >
