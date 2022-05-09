@@ -104,11 +104,15 @@ const ProductCatalogContextProvider =({children}) => {
   const [discount, setDiscount] = useState(100)
   const [subTotal, setSubtotal] = useState(0)
 
-  // add to basket
-  function handleAdd(){
 
+
+
+
+  // handle add to basket
+  function handleAdd(){
     setBasketItemCount((prev) => prev + 1)
     setOpenModel(false)
+    
   }
   
 

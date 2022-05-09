@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
 const SubTitle = styled(Typography)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -36,6 +37,7 @@ const IncDecBut = styled(Button)(({ theme }) => ({
 
 export default function ProductOptionDetail() {
 
+  const {quantity, discount, subTotal} = useProductCatalogContext()
 
 
 
@@ -56,17 +58,25 @@ export default function ProductOptionDetail() {
         </Grid>
 
         <Grid item xs={1.5}>
-          <IncDecBut>-</IncDecBut>
+          <IncDecBut
+            onClick = {(e) => {
+                console.log("decrement")
+            }}
+          >-</IncDecBut>
         </Grid>
 
         <Grid item xs={1.5} >
           <Quantity className='quantityInput'>
-            132
+            {quantity}
           </Quantity>
         </Grid>
 
         <Grid item xs={1.5}>
-          <IncDecBut>+</IncDecBut>
+          <IncDecBut
+            onClick = {(e) => {
+                console.log("increment")
+            }}
+          >+</IncDecBut>
         </Grid>
 
 
@@ -82,10 +92,12 @@ export default function ProductOptionDetail() {
         <Grid item xs={4.5}>
           <TextField
             hiddenLabel
-            defaultValue={100}
             variant="filled"
             size="small"
+            value = {discount}
           />
+          
+          
         </Grid>
 
 
@@ -104,7 +116,7 @@ export default function ProductOptionDetail() {
           <SubTitle
             align='center'
           >
-            100
+            {subTotal}
           </SubTitle>
         </Grid>
 
