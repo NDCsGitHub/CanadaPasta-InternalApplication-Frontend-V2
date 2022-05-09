@@ -44,7 +44,7 @@ export default function ProductOptionDetail() {
   
 
 
-  console.log(subTotal)
+
 
 
 

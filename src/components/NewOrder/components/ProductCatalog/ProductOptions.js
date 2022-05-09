@@ -24,11 +24,6 @@ import ProductOptionsDetail from './ProductOptionDetail'
 
 
 
-  console.log(activeModel)
-  console.log(orderBasket)
-  
-
-
   return (
     <div className ='optionDetailContainer'>
 
