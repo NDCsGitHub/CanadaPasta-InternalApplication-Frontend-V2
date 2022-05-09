@@ -44,7 +44,7 @@ export default function ProductOptionDetail() {
   
 
 
-
+  console.log(subTotal)
 
 
 
@@ -109,8 +109,6 @@ export default function ProductOptionDetail() {
                 setDiscount(e.target.value)
             }}
           />
-          
-          
         </Grid>
 
 

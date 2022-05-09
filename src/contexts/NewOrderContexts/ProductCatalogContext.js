@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 import axios from 'axios'
+import { tableSortLabelClasses } from '@mui/material'
 
 
 
@@ -96,7 +97,7 @@ const ProductCatalogContextProvider =({children}) => {
   const [basketItemCount, setBasketItemCount] = useState(0)
 
   //current selected item
-  const [activeModel, setActiveModel] = useState()
+  const [activeModel, setActiveModel] = useState({})
   const [openModel, setOpenModel] = useState(false);
 
 
@@ -106,11 +107,12 @@ const ProductCatalogContextProvider =({children}) => {
 
 
   useEffect(()=>{
-
-    console.log(activeModel)
-
     
-  },[quantity,discount])
+    let total = quantity * (discount/100) * activeModel.price;
+
+    setSubtotal(total)
+    
+  },[quantity,discount, activeModel])
 
   // handle add to basket
   function handleAdd(){
