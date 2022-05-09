@@ -1,0 +1,25 @@
+
+.decrementButton{
+    background-color: #ffca40 !important;
+    color:black !important;
+    font-weight: bold !important;
+    width: 1rem;
+    margin-top: 4px !important;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+.incrementButton{
+    background-color: #ffca40 !important;
+    color:black !important;
+    font-weight: bold !important;
+    width: 1rem;
+    padding:0.1rem;
+    font-size: 2rem;
+    margin-top: 4px !important;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+

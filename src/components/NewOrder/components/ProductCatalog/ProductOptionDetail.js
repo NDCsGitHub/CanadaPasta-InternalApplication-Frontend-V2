@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext';
+import './productOptionDetail.css'
+
 const SubTitle = styled(Typography)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -23,14 +25,15 @@ const Quantity = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold',
 }));
 
-const IncDecBut = styled(Button)(({ theme }) => ({
-  ...theme.typography.body2,
-  fontSize: '1.3rem',
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: 'black',
-  fontWeight: 'bold'
-}));
+// const IncDecBut = styled(Button)(({ theme }) => ({
+//     ...theme.typography.body2,
+//     fontSize: '1.3rem',
+//     padding: theme.spacing(1),
+//     textAlign: 'center',
+//     color: 'black',
+//     fontWeight: 'bold'
+//   }));
+  
 
 
 
@@ -58,11 +61,13 @@ export default function ProductOptionDetail() {
         </Grid>
 
         <Grid item xs={1.5}>
-          <IncDecBut
+          <Button
+            className='decrementButton'
+            variant="contained" 
             onClick = {(e) => {
                 console.log("decrement")
             }}
-          >-</IncDecBut>
+          >-</Button>
         </Grid>
 
         <Grid item xs={1.5} >
@@ -72,11 +77,13 @@ export default function ProductOptionDetail() {
         </Grid>
 
         <Grid item xs={1.5}>
-          <IncDecBut
+          <Button
+            className='incrementButton'
+            variant="contained" 
             onClick = {(e) => {
                 console.log("increment")
             }}
-          >+</IncDecBut>
+          >+</Button>
         </Grid>
 
 
@@ -99,7 +106,6 @@ export default function ProductOptionDetail() {
           
           
         </Grid>
-
 
 
 

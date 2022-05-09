@@ -106,8 +106,6 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 
-
-
   // handle add to basket
   function handleAdd(){
     setBasketItemCount((prev) => prev + 1)
@@ -115,7 +113,7 @@ const ProductCatalogContextProvider =({children}) => {
     
   }
   
-
+  
 
 
 
