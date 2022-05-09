@@ -12,13 +12,15 @@ import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/
 
 export default function ProductCard(props) {
     
-  const {setActiveModel, setOpenModel} = useProductCatalogContext()
+  const {setActiveModel, setOpenModel, setQuantity, setDiscount} = useProductCatalogContext()
   const {product_name_en, product_name_cn, price} = props
 
 
   const handleClick = () =>{
     setActiveModel(props)
     setOpenModel(true)
+    setQuantity(0)
+    setDiscount(100)
   }   
 
 
