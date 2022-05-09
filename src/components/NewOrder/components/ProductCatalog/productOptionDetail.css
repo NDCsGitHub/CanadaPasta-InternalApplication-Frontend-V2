@@ -21,3 +21,9 @@
     text-align: center;
 }
 
+.quantityInput{
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-left: 12px !important;
+}

@@ -95,7 +95,7 @@ export default function ProductOptionDetail() {
           </SubTitle>
         </Grid>
 
-        <Grid item xs={4.5}>
+        <Grid item xs={4.9}>
           <TextField
             hiddenLabel
             type='number'
