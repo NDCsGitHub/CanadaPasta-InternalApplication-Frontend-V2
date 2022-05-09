@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import RamenDiningIcon from '@mui/icons-material/RamenDining';
@@ -25,7 +25,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 
 export default function ProductCatalog() {
-  const {tabValue, handleTabChange, productList, loading, basketItemCount, setBasketItemCount } = useProductCatalogContext()
+  const {tabValue, handleTabChange, productList, loading, basketItemCount } = useProductCatalogContext()
 
 
   
