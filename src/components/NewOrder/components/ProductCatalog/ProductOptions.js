@@ -15,10 +15,14 @@ import ProductOptionsDetail from './ProductOptionDetail'
 
   
 
- export default function ProductOptions( ) {
-  const {orderBasket, setOrderBasket, basketCount, setBasketCount} = useNewOrderContext()
-  const {activeModel} = useProductCatalogContext()
+  export default function ProductOptions( ) {
+  const {orderBasket, setOrderBasket} = useNewOrderContext()
+  const {activeModel, handleAdd} = useProductCatalogContext()
   const {product_name_en, product_name_cn, price} = activeModel
+
+
+
+
 
   console.log(activeModel)
   console.log(orderBasket)
@@ -74,7 +78,16 @@ import ProductOptionsDetail from './ProductOptionDetail'
       <ProductOptionsDetail />
 
 
-      <Button className='addToBasketButton' variant="contained" endIcon={<SendIcon />}>
+      <Button 
+        className='addToBasketButton' 
+        variant="contained" 
+        endIcon={<SendIcon />}
+        onClick={(e)=>{
+          handleAdd()
+        }}
+      
+      
+      >
         Add to Order
       </Button>
 

@@ -61,7 +61,6 @@ const ProductCatalogContextProvider =({children}) => {
       })
       setLoading(0)
       if(respProducts.data.error === false){
-        console.log(respProducts.data.data)
         setProductList([
           ...respProducts.data.data
         ])
@@ -93,11 +92,25 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 /**************************PRODUCT SELECTION OPTION MODEL START***************************/
+  // basketCount
+  const [basketItemCount, setBasketItemCount] = useState(0)
+
+  //current selected item
   const [activeModel, setActiveModel] = useState()
   const [openModel, setOpenModel] = useState(false);
-  const [basketItemCount, setBasketItemCount] = useState()
-  
 
+
+  const [quantity, setQuantity] = useState(0)
+  const [discount, setDiscount] = useState(100)
+  const [subTotal, setSubtotal] = useState(0)
+
+  // add to basket
+  function handleAdd(){
+
+    setBasketItemCount((prev) => prev + 1)
+    setOpenModel(false)
+  }
+  
 
 
 
@@ -117,6 +130,10 @@ const ProductCatalogContextProvider =({children}) => {
         setOpenModel,
         basketItemCount,
         setBasketItemCount,
+        handleAdd,
+        quantity,
+        discount, 
+        subTotal,
       }}
 
     >
