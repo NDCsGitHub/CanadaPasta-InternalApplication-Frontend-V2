@@ -44,7 +44,7 @@ const ProductCatalogContextProvider =({children}) => {
   //active product list to be mapped
   const [productList, setProductList] = useState([])
 
-
+  
   // function fetch product
   const fetchProduct = async(productType) =>{
     setLoading(1)
@@ -95,7 +95,7 @@ const ProductCatalogContextProvider =({children}) => {
 /**************************PRODUCT SELECTION OPTION MODEL START***************************/
   const [activeModel, setActiveModel] = useState()
   const [openModel, setOpenModel] = useState(false);
-  const [basketItemCount, setBasketItemCount] = useState('')
+  const [basketItemCount, setBasketItemCount] = useState()
   
 
 
@@ -115,6 +115,8 @@ const ProductCatalogContextProvider =({children}) => {
         activeModel,
         openModel,
         setOpenModel,
+        basketItemCount,
+        setBasketItemCount,
       }}
 
     >

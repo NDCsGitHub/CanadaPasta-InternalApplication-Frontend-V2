@@ -93,7 +93,6 @@ const NewOrderContextProvider = ({children}) => {
 
         // basket
     const [orderBasket, setOrderBasket] = useState({})
-    const [basketCount, setBasketCount] = useState(0)
 
 
     /*************************BASKET INFO: END******************************/
@@ -135,8 +134,6 @@ const NewOrderContextProvider = ({children}) => {
                 handleOrderInfo,
                 orderBasket,
                 setOrderBasket,
-                basketCount,
-                setBasketCount,
             }}
         >
 
