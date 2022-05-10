@@ -20,7 +20,6 @@ export default function CartDetailOptions() {
     <div className='cartDetailContainer'>
         <Stack spacing={2}>
             <Item>Item 1</Item>
-            
         </Stack>
     </div>
   )
