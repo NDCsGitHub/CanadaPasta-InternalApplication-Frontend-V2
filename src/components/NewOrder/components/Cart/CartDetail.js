@@ -1,7 +1,6 @@
 import React from 'react'
 import { useProductCatalogContext } from '../../../../contexts/NewOrderContexts/ProductCatalogContext'
 import CartDetailOptions from './CartDetailOptions'
-import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -9,41 +8,41 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import './cartDetail.css'
 
 
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
-  
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }));
-  
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
-  
+
+const TAX_RATE = 0.07;
+
+function ccyFormat(num) {
+  return `${num.toFixed(2)}`;
+}
+
+function priceRow(qty, unit) {
+  return qty * unit;
+}
+
+function createRow(desc, qty, unit) {
+  const price = priceRow(qty, unit);
+  return { desc, qty, unit, price };
+}
+
+function subtotal(items) {
+  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+}
+
+const rows = [
+  createRow('Paperclips (Box)', 100, 1.15),
+  createRow('Paper (Case)', 10, 45.99),
+  createRow('Waste Basket', 2, 17.99),
+];
+
+const invoiceSubtotal = subtotal(rows);
+const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+
+
 
 
 
@@ -59,40 +58,52 @@ export default function CartDetail() {
         {basket.length <= 0 ? (
             <h1>BASKET IS EMPTY</h1>
         ) : (
-
-            <div>
                 <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 600 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                            <StyledTableCell align="right">Calories</StyledTableCell>
-                            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
+                    <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center" colSpan={3}>
+                                    Details
+                                </TableCell>
+                                <TableCell align="right">Price</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Desc</TableCell>
+                                <TableCell align="right">Qty.</TableCell>
+                                <TableCell align="right">Unit</TableCell>
+                                <TableCell align="right">Sum</TableCell>
+                            </TableRow>
+                        </TableHead>
 
+                        <TableBody>
+                            {rows.map((row) => (
+                                <TableRow key={row.desc}>
+                                <TableCell>{row.desc}</TableCell>
+                                <TableCell align="right">{row.qty}</TableCell>
+                                <TableCell align="right">{row.unit}</TableCell>
+                                <TableCell align="right">{ccyFormat(row.price)}</TableCell>
+                                </TableRow>
+                            ))}
 
-                    <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
+                            <TableRow>
+                                <TableCell rowSpan={3} />
+                                <TableCell colSpan={2}>Subtotal</TableCell>
+                                <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
+                            </TableRow>
 
-                            <StyledTableCell component="th" scope="row">
-                                {row.name}
-                            </StyledTableCell>
-                            
-                            <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                            <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                            <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                            <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
+                            <TableRow>
+                                <TableCell>Tax</TableCell>
+                                <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                                <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
+                            </TableRow>
 
-                </Table>
+                            <TableRow>
+                                <TableCell colSpan={2}>Total</TableCell>
+                                <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
                 </TableContainer>
-            </div>
         )}
 
     </div>
