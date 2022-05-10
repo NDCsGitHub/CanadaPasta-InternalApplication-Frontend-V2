@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 import axios from 'axios'
-import { tableSortLabelClasses } from '@mui/material'
+
 
 
 
@@ -117,14 +117,17 @@ const ProductCatalogContextProvider =({children}) => {
   function handleAdd(){
 
     console.log(basket)
-    console.log(activeModel)
-    console.log(quantity, discount, subTotal)
 
     
-    // setBasket({
-    //   ...basket,
-      
-    // })
+    setBasket([
+      ...basket,
+      {...activeModel,
+        quantity,
+        discount,
+        subTotal,
+      }
+    ])
+
 
 
     setBasketItemCount((prev) => prev + 1)
@@ -134,7 +137,9 @@ const ProductCatalogContextProvider =({children}) => {
     setSubtotal(0)
   }
   
-
+  useEffect(() => {
+    console.log(basket)
+  },[basket])
 
 
 
