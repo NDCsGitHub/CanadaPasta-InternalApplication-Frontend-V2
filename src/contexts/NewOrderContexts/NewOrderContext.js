@@ -91,8 +91,18 @@ const NewOrderContextProvider = ({children}) => {
 
     /*************************BASKET INFO: START******************************/
 
-        // basket
+    // basket
+    const [basketModel, setBasketModel] = useState(false)
     const [orderBasket, setOrderBasket] = useState({})
+
+    const toggleBasketModel = (e) => {
+        setBasketModel((prev) => !prev)
+    }
+
+
+
+
+
 
 
     /*************************BASKET INFO: END******************************/
@@ -134,6 +144,9 @@ const NewOrderContextProvider = ({children}) => {
                 handleOrderInfo,
                 orderBasket,
                 setOrderBasket,
+                toggleBasketModel,
+                basketModel,
+                setBasketModel,
             }}
         >
 

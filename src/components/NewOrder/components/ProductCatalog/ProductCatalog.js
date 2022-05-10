@@ -13,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
+import { useNewOrderContext } from '../../../../contexts/NewOrderContexts/NewOrderContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -25,8 +26,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 
 export default function ProductCatalog() {
-  const {tabValue, handleTabChange, productList, loading, basketItemCount } = useProductCatalogContext()
-
+  const {tabValue, handleTabChange, productList, loading, basket } = useProductCatalogContext()
+  const {toggleBasketModel, basketModel} = useNewOrderContext()
 
   
 
@@ -46,7 +47,7 @@ export default function ProductCatalog() {
                 size="large"     
                 className="cartButton"
                 endIcon={
-                    <StyledBadge badgeContent={basketItemCount} color="primary">
+                    <StyledBadge badgeContent={basket.length} color="primary">
                         <ShoppingCartCheckoutIcon 
                             fontSize="large" 
                             sx={{
@@ -55,10 +56,18 @@ export default function ProductCatalog() {
                             />
                     </StyledBadge>
                 } 
+
+                onClick={() => {
+                    toggleBasketModel()
+                    console.log(basketModel)
+                }}
             >
                 CART
             </Button>
         </Tabs>
+                
+
+
 
 
         {loading === 1? (

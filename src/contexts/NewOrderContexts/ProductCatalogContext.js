@@ -96,9 +96,6 @@ const ProductCatalogContextProvider =({children}) => {
   // basket Item
   const [basket, setBasket] = useState([])
 
-  // basketCount
-  const [basketItemCount, setBasketItemCount] = useState(0)
-
   //current selected item
   const [activeModel, setActiveModel] = useState({})
   const [openModel, setOpenModel] = useState(false);
@@ -115,10 +112,6 @@ const ProductCatalogContextProvider =({children}) => {
 
   // handle add to basket
   function handleAdd(){
-
-    console.log(basket)
-
-    
     setBasket([
       ...basket,
       {...activeModel,
@@ -127,10 +120,6 @@ const ProductCatalogContextProvider =({children}) => {
         subTotal,
       }
     ])
-
-
-
-    setBasketItemCount((prev) => prev + 1)
     setOpenModel(false)
     setQuantity(0)
     setDiscount(100)
@@ -139,6 +128,7 @@ const ProductCatalogContextProvider =({children}) => {
   
   useEffect(() => {
     console.log(basket)
+    console.log(basket.length)
   },[basket])
 
 
@@ -156,14 +146,13 @@ const ProductCatalogContextProvider =({children}) => {
         activeModel,
         openModel,
         setOpenModel,
-        basketItemCount,
-        setBasketItemCount,
         handleAdd,
         quantity,
         setQuantity,
         discount,
         setDiscount, 
         subTotal,
+        basket,
       }}
 
     >

@@ -7,7 +7,8 @@ import ProductOptions from './components/ProductCatalog/ProductOptions'
 import { useProductCatalogContext } from '../../contexts/NewOrderContexts/ProductCatalogContext'
 import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
-
+import { useNewOrderContext } from '../../contexts/NewOrderContexts/NewOrderContext';
+import CartDetail from './components/Cart/CartDetail'
 
 
 
@@ -15,6 +16,8 @@ export default function NewOrder() {
 
     // need to include open drawer here along with its state, otherwise animation would not work.
     const {openModel, setOpenModel} = useProductCatalogContext()
+
+    const {basketModel, toggleBasketModel} = useNewOrderContext()
 
     function toggleDrawer(e){
         setOpenModel((prev) => !prev)
@@ -27,9 +30,10 @@ export default function NewOrder() {
         <ProductCatalog/>
     
 
-        {/* ternary statement to control toggle right model*/}
 
-    
+
+
+        {/* Product Option Model */}
         <Drawer
             className="productOptionDrawer"
             anchor='right'
@@ -43,18 +47,48 @@ export default function NewOrder() {
                 }
             }}
         >
-
             <Box 
                 sx={{
                     width:500,
                     padding:1,
                 }}
             >
-
                 <ProductOptions/>
-
             </Box>
         </Drawer>
+
+    
+        {/* CART Model */}
+        <Drawer
+            className="productOptionDrawer"
+            anchor='right'
+            open = {basketModel}
+            onClose={(e)=>toggleBasketModel(e)}
+            variant = 'temporary'
+            PaperProps={{
+                square:false,
+                sx:{
+                    borderRadius:'30px 0 0 20px',
+                }
+            }}
+        >
+            <Box 
+                sx={{
+                    width:800,
+                    padding:1,
+                }}
+            >
+               <CartDetail />
+            </Box>
+        </Drawer>
+        
+
+
+
+
+
+
+
 
     </>
     )
