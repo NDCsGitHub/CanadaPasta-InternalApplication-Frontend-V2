@@ -234,7 +234,7 @@ export default function Sidemenu() {
                     onClick={()=>{
                         handleSidemenuState('New Product')
                     }}
-                    >
+                >
                     <ListItemIcon
                         sx={{
                             minWidth: 0,
