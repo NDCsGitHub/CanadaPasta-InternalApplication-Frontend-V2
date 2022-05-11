@@ -153,6 +153,7 @@ const ProductCatalogContextProvider =({children}) => {
         setDiscount, 
         subTotal,
         basket,
+        setBasket,
       }}
 
     >

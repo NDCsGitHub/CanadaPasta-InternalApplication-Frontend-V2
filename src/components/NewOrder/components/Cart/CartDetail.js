@@ -24,7 +24,7 @@ export default function CartDetail() {
 
   useEffect(() => {
     let itemtotal = basket.map((item) => item.subTotal * 1)
-    let subtotals =itemtotal.reduce((prev, curr) => prev+curr)
+    let subtotals =itemtotal.reduce((prev, curr) => (prev+curr),0)
     let finalTotal = subtotals * (TAX_RATE+1)
     let taxValue = finalTotal * TAX_RATE
 
@@ -35,24 +35,11 @@ export default function CartDetail() {
   },[basket])
 
 
-  const handleDeleteItem =(id) =>{
 
-    console.log(basket)
-
-
-    
-    
-  //   const handleDelete=(index)=>{
-  //     const values = [...personalInfo.employmentArray]
-  //     values.splice(index,1)
-  //     setPersonalInfo({...personalInfo, employmentArray:values})
-  // }
-
-
-
-    // setTasks(   
-    //   taskArray.filter(item  => item.id !== id) 
-    // ) 
+  const handleDeleteItem =(index) =>{
+      const values = [...basket]
+      values.splice(index,1)
+      setBasket([...values])
   }
 
 
@@ -100,7 +87,7 @@ export default function CartDetail() {
 
                                 <IconButton sx={{color:'black', background:'#ffca40' }}
                                   onClick={()=>{
-                                    handleDeleteItem()
+                                    handleDeleteItem(index)
                                   }}
                                 >
                                   <DeleteForeverIcon />
