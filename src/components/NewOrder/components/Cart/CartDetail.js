@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import {useNewOrderContext} from '../../../../contexts/NewOrderContexts/NewOrderContext'
 import {fixNum} from '../../../../Utils/NumberConversion.js'
+import emptycart from '../../../../img/empty-cart.png'
+import Button from '@mui/material/Button';
 
 
 const TAX_RATE = 0.13;
@@ -50,7 +52,20 @@ export default function CartDetail() {
     <div className = 'cartContainer'>
 
         {basket.length <= 0 ? (
+          <div className='emptyCart'>
+
             <h1>BASKET IS EMPTY</h1>
+            <img src={emptycart} alt="empty cart" width="500" height="400" />
+            <Button 
+              className='addToBasketButton' 
+              variant="contained" 
+              onClick={(e)=>{
+
+              }}
+            >
+              Add Items!
+            </Button>
+          </div>
         ) : (
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} >

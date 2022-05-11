@@ -7,3 +7,10 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.emptyCart{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
