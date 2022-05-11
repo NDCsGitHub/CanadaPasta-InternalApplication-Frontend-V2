@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 import moment from 'moment';
-
+import { useProductCatalogContext } from './ProductCatalogContext';
 
 const NewOrderContext = React.createContext()
 const useNewOrderContext = () => {
@@ -98,9 +98,15 @@ const NewOrderContextProvider = ({children}) => {
     const [total, setTotal] = useState()
     const [taxAmount, setTaxAmount] = useState()
 
+    const {basket} = useProductCatalogContext()
+
     const toggleBasketModel = (e) => {
         setBasketModel((prev) => !prev)
     }
+
+    useEffect(()=>{
+        setOrderBasket(basket)
+    }, [basket])
 
 
     /*************************BASKET INFO: END******************************/
@@ -116,11 +122,46 @@ const NewOrderContextProvider = ({children}) => {
     /*************************API CALL : START******************************/ 
 
 
+
     useEffect(() => {
         console.log(orderBasket)
         console.log(orderInfo)
 
     }, [orderBasket,orderInfo])
+
+
+    const handleSubmitOrder = async()=>{
+        const paramsNewOrder = new URLSearchParams()
+
+
+
+
+
+
+        
+        // user Auth
+        const user = JSON.parse(localStorage.getItem('user'))
+        const token = user.user.api_key 
+        console.log(token)
+        console.log(user.user)
+
+        try{
+            const respOrderInfo = axios.post('')
+
+
+
+        }catch(error){
+
+
+
+
+        }
+
+
+
+    }
+
+
 
 
 

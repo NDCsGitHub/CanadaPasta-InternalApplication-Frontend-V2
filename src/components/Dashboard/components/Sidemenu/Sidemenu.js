@@ -246,8 +246,6 @@ export default function Sidemenu() {
                     </ListItemIcon>
                     <ListItemText primary={'New Product'} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
-
-
             </div>
 
 

@@ -32,6 +32,8 @@ export default function CartDetail() {
     setTaxAmount(fixNum(taxValue))
     setTotal((prev)=> fixNum(finalTotal))
     setSubTotal(subtotals)
+
+
   },[basket])
 
 
@@ -42,6 +44,7 @@ export default function CartDetail() {
       setBasket([...values])
   }
 
+  
 
 
 

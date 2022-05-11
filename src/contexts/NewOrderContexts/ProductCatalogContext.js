@@ -4,7 +4,6 @@ import axios from 'axios'
 
 
 
-
 const ProductCatalogContext = React.createContext()
 const useProductCatalogContext = () =>{
   return useContext(ProductCatalogContext)
