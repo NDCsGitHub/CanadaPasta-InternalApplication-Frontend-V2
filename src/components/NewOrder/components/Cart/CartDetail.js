@@ -21,7 +21,7 @@ const TAX_RATE = 0.13;
 
 
 export default function CartDetail() {
-  const {subTotal, setSubTotal, total, setTotal, setTaxAmount, taxAmount, setBasketModel } = useNewOrderContext()
+  const {subTotal, setSubTotal, total, setTotal, setTaxAmount, taxAmount, setBasketModel, handleSubmitOrder } = useNewOrderContext()
   const {basket, setBasket} = useProductCatalogContext()
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function CartDetail() {
       setBasket([...values])
   }
 
-  
+
 
 
 
@@ -147,7 +147,7 @@ export default function CartDetail() {
                   className='addToBasketButton' 
                   variant="contained" 
                   onClick={(e)=>{
-
+                    handleSubmitOrder()
                   }}
                 >
                   Submit Order!

@@ -59,7 +59,6 @@ export default function ProductCatalog() {
 
                 onClick={() => {
                     toggleBasketModel()
-                    console.log(basketModel)
                 }}
             >
                 CART

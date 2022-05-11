@@ -1,6 +1,9 @@
 import React, {useContext, useState, useEffect} from 'react'
 import moment from 'moment';
 import { useProductCatalogContext } from './ProductCatalogContext';
+import {v4 as uuid} from 'uuid'
+
+
 
 const NewOrderContext = React.createContext()
 const useNewOrderContext = () => {
@@ -66,8 +69,6 @@ const NewOrderContextProvider = ({children}) => {
             pickupLocation:'',
             shipOrPickDate:actualDeliveryDate,
             shippingAddress:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
-            salesRepId:'get it from storage when calling api',
-            salesRepName:'get it from storage when calling api',
         })
 
     },[currentCustomer,deliveryDate])
@@ -131,30 +132,67 @@ const NewOrderContextProvider = ({children}) => {
 
 
     const handleSubmitOrder = async()=>{
-        const paramsNewOrder = new URLSearchParams()
-        const paramsBasket = new URLSearchParams()
-
-    
-
-
 
         // user Auth
         const user = JSON.parse(localStorage.getItem('user'))
         const token = user.user.api_key 
-        console.log(token)
-        console.log(user.user)
+        // console.log(token)
+        // console.log(user.user)
 
-        try{
-            const respOrderInfo = axios.post('')
+        //create id
+        const uniqueID = uuid()
 
-
-
-        }catch(error){
-
-
-
-
+        //params for order info
+        const paramsNewOrder = new URLSearchParams()
+        for(const key in orderInfo){
+            paramsNewOrder.append(key, orderInfo[key] )
         }
+        paramsNewOrder.append('orderTotal', total )
+        paramsNewOrder.append('orderId', uniqueID )
+        paramsNewOrder.append('salesFirstName', user.user.first_name )
+        paramsNewOrder.append('salesLastName', user.user.last_name )
+        paramsNewOrder.append('salesEmail', user.user.email )
+
+        // params for basket info
+        const paramsBasket = new FormData();
+
+        orderBasket.map((item, index) => (
+            paramsBasket.append(index,JSON.stringify(item))
+        ))
+
+
+
+        // orderBasket.forEach((item) => {
+        //     for(const key in item ){
+        //         // console.log(orderBasket)
+        //         console.log(key)
+        //         console.log(item[key])
+        //     }
+        // })
+     
+
+        // // check params
+        for(const key of paramsNewOrder){
+            console.log(key)
+        }
+        console.log(paramsBasket)
+        for(const key of paramsBasket){
+            console.log(key)
+        }
+
+
+
+        // try{
+        //     // const respOrderInfo = axios.post('')
+
+
+
+        // }catch(error){
+
+
+
+
+        // }
 
 
 
@@ -188,6 +226,7 @@ const NewOrderContextProvider = ({children}) => {
                 setTotal,
                 taxAmount,
                 setTaxAmount,
+                handleSubmitOrder,
             }}
         >
 
