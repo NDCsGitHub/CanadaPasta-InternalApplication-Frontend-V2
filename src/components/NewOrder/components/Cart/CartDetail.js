@@ -69,7 +69,7 @@ export default function CartDetail() {
                           </TableRow>
 
                           <TableRow>
-                              <TableCell>Item Info</TableCell>
+                              <TableCell >Item Info</TableCell>
                               <TableCell align="right">Qty.</TableCell>
                               <TableCell align="right">Price</TableCell>
                               <TableCell align="right">Subtotal</TableCell>
@@ -78,6 +78,8 @@ export default function CartDetail() {
 
 
                       <TableBody>
+
+                          {/* basket items */}
                           {rows.map((row) => (
                               <TableRow key={row.desc}>
                                 <TableCell>{row.desc}</TableCell>
@@ -87,6 +89,8 @@ export default function CartDetail() {
                               </TableRow>
                           ))}
 
+
+                          {/* bottom subtotal panel */}
                           <TableRow>
                               <TableCell rowSpan={3} />
                               <TableCell colSpan={2}>Total</TableCell>
@@ -103,8 +107,10 @@ export default function CartDetail() {
                               <TableCell colSpan={2}>Total</TableCell>
                               <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                           </TableRow>
-                      </TableBody>
 
+
+
+                      </TableBody>
                     </Table>
                 </TableContainer>
         )}
