@@ -62,9 +62,7 @@ export default function CartDetail() {
                     <Table sx={{ minWidth: 700 }} aria-label="spanning table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center" colSpan={3}>
-                                    Details
-                                </TableCell>
+                                <TableCell align="center" colSpan={3}>Details</TableCell>
                                 <TableCell align="right">Price</TableCell>
                             </TableRow>
                             <TableRow>
