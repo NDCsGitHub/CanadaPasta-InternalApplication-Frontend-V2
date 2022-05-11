@@ -1,3 +1,9 @@
 .cartContainer{
     margin: 1rem;
 }
+
+.tableHeader{
+    background-color: #ffca40;
+    font-weight: bold;
+    font-size: 20px;
+}
