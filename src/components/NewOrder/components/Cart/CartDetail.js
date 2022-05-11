@@ -25,8 +25,9 @@ export default function CartDetail() {
   useEffect(() => {
     let itemtotal = basket.map((item) => item.subTotal * 1)
     let subtotals =itemtotal.reduce((prev, curr) => prev+curr)
-    let finalTotal =subtotals * (TAX_RATE+1)
+    let finalTotal = subtotals * (TAX_RATE+1)
     let taxValue = finalTotal * TAX_RATE
+
 
     setTaxAmount(fixNum(taxValue))
     setTotal((prev)=> fixNum(finalTotal))
@@ -36,8 +37,9 @@ export default function CartDetail() {
 
   const handleDeleteItem =(id) =>{
 
-
     console.log(basket)
+
+    
   //   const handleDelete=(index)=>{
   //     const values = [...personalInfo.employmentArray]
   //     values.splice(index,1)
