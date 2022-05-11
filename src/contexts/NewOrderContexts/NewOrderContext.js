@@ -96,7 +96,7 @@ const NewOrderContextProvider = ({children}) => {
     const [orderBasket, setOrderBasket] = useState()
     const [subTotal, setSubTotal] = useState(0)
     const [total, setTotal] = useState()
-
+    const [taxAmount, setTaxAmount] useState()
 
     const toggleBasketModel = (e) => {
         setBasketModel((prev) => !prev)
@@ -153,7 +153,9 @@ const NewOrderContextProvider = ({children}) => {
                 subTotal,
                 setSubTotal,
                 total, 
-                setTotal
+                setTotal,
+                taxAmount,
+                setTaxAmount,
             }}
         >
 

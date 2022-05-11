@@ -12,21 +12,25 @@ import './cartDetail.css'
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import {useNewOrderContext} from '../../../../contexts/NewOrderContexts/NewOrderContext'
+import {fixNum} from '../../../../Utils/NumberConversion.js'
+
 
 const TAX_RATE = 0.13;
 
 
-
-
 export default function CartDetail() {
-  const {subTotal, setSubTotal, total, setTotal } = useNewOrderContext()
+  const {subTotal, setSubTotal, total, setTotal, setTaxAmount, taxAmount } = useNewOrderContext()
   const {basket, setBasket} = useProductCatalogContext()
 
   useEffect(() => {
     let itemtotal = basket.map((item) => item.subTotal * 1)
     let subtotals =itemtotal.reduce((prev, curr) => prev+curr)
-    let finalTotal = subtotals * TAX_RATE
-    setTotal((prev)=> finalTotal)
+    let finalTotal =subtotals * (TAX_RATE+1)
+    let taxValue = finalTotal *
+
+    
+    setTaxAmount()
+    setTotal((prev)=> fixNum(finalTotal))
     setSubTotal(subtotals)
   },[basket])
 
@@ -34,7 +38,7 @@ export default function CartDetail() {
 
 
 
-  
+
 
 
   return (
@@ -98,7 +102,7 @@ export default function CartDetail() {
                           <TableRow>
                               <TableCell>Tax</TableCell>
                               <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                              <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
+                              <TableCell align="right">{taxAmount}</TableCell>
                           </TableRow>
 
                           <TableRow>
