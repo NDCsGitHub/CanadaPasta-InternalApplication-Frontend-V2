@@ -39,6 +39,8 @@ export default function CartDetail() {
 
     console.log(basket)
 
+
+    
     
   //   const handleDelete=(index)=>{
   //     const values = [...personalInfo.employmentArray]
