@@ -94,6 +94,9 @@ const NewOrderContextProvider = ({children}) => {
     // basket
     const [basketModel, setBasketModel] = useState(false)
     const [orderBasket, setOrderBasket] = useState({})
+    const [subTotal, setSubTotal] = useState()
+    const [total, setTotal] = useState()
+
 
     const toggleBasketModel = (e) => {
         setBasketModel((prev) => !prev)

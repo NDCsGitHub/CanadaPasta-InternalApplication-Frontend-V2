@@ -10,8 +10,6 @@ import Box from '@mui/material/Box';
 import { useNewOrderContext } from '../../contexts/NewOrderContexts/NewOrderContext';
 import CartDetail from './components/Cart/CartDetail'
 
-
-
 export default function NewOrder() {
 
     // need to include open drawer here along with its state, otherwise animation would not work.
@@ -74,11 +72,12 @@ export default function NewOrder() {
         >
             <Box 
                 sx={{
-                    width:1100,
+                    width:1400,
                     padding:1,
                 }}
             >
                <CartDetail />
+
             </Box>
         </Drawer>
         

@@ -70,6 +70,7 @@ import ProductOptionsDetail from './ProductOptionDetail'
       
       <ProductOptionsDetail />
 
+        
 
       <Button 
         className='addToBasketButton' 
