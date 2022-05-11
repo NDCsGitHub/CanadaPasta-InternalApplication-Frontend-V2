@@ -62,8 +62,6 @@ import ProductOptionsDetail from './ProductOptionDetail'
                 >
                   {price}
                 </Typography>
-
-
             </CardContent>
 
       </Card>
