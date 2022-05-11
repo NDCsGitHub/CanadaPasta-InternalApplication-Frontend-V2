@@ -26,10 +26,10 @@ export default function CartDetail() {
     let itemtotal = basket.map((item) => item.subTotal * 1)
     let subtotals =itemtotal.reduce((prev, curr) => prev+curr)
     let finalTotal =subtotals * (TAX_RATE+1)
-    let taxValue = finalTotal *
+    let taxValue = finalTotal * TAX_RATE
 
-    
-    setTaxAmount()
+
+    setTaxAmount(fixNum(taxValue))
     setTotal((prev)=> fixNum(finalTotal))
     setSubTotal(subtotals)
   },[basket])
