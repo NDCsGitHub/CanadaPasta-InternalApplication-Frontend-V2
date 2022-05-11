@@ -21,7 +21,7 @@ const TAX_RATE = 0.13;
 
 
 export default function CartDetail() {
-  const {subTotal, setSubTotal, total, setTotal, setTaxAmount, taxAmount } = useNewOrderContext()
+  const {subTotal, setSubTotal, total, setTotal, setTaxAmount, taxAmount, setBasketModel } = useNewOrderContext()
   const {basket, setBasket} = useProductCatalogContext()
 
   useEffect(() => {
@@ -29,8 +29,6 @@ export default function CartDetail() {
     let subtotals =itemtotal.reduce((prev, curr) => (prev+curr),0)
     let finalTotal = subtotals * (TAX_RATE+1)
     let taxValue = finalTotal * TAX_RATE
-
-
     setTaxAmount(fixNum(taxValue))
     setTotal((prev)=> fixNum(finalTotal))
     setSubTotal(subtotals)
@@ -60,7 +58,7 @@ export default function CartDetail() {
               className='addToBasketButton' 
               variant="contained" 
               onClick={(e)=>{
-
+                setBasketModel(false)
               }}
             >
               Add Items!
