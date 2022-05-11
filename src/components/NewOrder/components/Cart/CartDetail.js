@@ -34,9 +34,21 @@ export default function CartDetail() {
   },[basket])
 
 
-  const handleDeleteItem =() =>{
+  const handleDeleteItem =(id) =>{
 
-    
+
+    console.log(basket)
+  //   const handleDelete=(index)=>{
+  //     const values = [...personalInfo.employmentArray]
+  //     values.splice(index,1)
+  //     setPersonalInfo({...personalInfo, employmentArray:values})
+  // }
+
+
+
+    // setTasks(   
+    //   taskArray.filter(item  => item.id !== id) 
+    // ) 
   }
 
 
@@ -81,9 +93,15 @@ export default function CartDetail() {
                               <TableCell align="right">{item.price}</TableCell>
                               <TableCell align="right">{item.subTotal}</TableCell>
                               <TableCell align="center">
-                                <IconButton sx={{color:'black', background:'#ffca40' }}>
+
+                                <IconButton sx={{color:'black', background:'#ffca40' }}
+                                  onClick={()=>{
+                                    handleDeleteItem()
+                                  }}
+                                >
                                   <DeleteForeverIcon />
                                 </IconButton>
+                                
                               </TableCell>
                             </TableRow>
                           ))}
