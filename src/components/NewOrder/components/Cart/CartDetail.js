@@ -78,7 +78,6 @@ export default function CartDetail() {
 
 
                       <TableBody>
-
                           {/* basket items */}
                           {rows.map((row) => (
                               <TableRow key={row.desc}>
