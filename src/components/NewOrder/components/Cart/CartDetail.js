@@ -34,6 +34,9 @@ export default function CartDetail() {
 
 
 
+  
+
+
   return (
     <div className = 'cartContainer'>
 
