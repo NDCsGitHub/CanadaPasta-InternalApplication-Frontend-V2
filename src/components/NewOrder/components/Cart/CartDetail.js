@@ -13,15 +13,18 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import {useNewOrderContext} from '../../../../contexts/NewOrderContexts/NewOrderContext'
 
-const TAX_RATE = 0.13;
 
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
 
-function priceRow(qty, unit) {
-  return qty * unit;
-}
+
+// const TAX_RATE = 0.13;
+
+// function ccyFormat(num) {
+//   return `${num.toFixed(2)}`;
+// }
+
+// function priceRow(qty, unit) {
+//   return qty * unit;
+// }
 
 // function createRow(desc, qty, unit) {
 //   const price = priceRow(qty, unit);
@@ -34,27 +37,25 @@ function priceRow(qty, unit) {
 
 
 
-
+// function subtotal(items) {
+//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+// }
 
 
 export default function CartDetail() {
 
-  const {subTotal, setSubTotal, } = useNewOrderContext()
+  const {subTotal, setSubTotal } = useNewOrderContext()
   const {basket, setBasket} = useProductCatalogContext()
   
-  
-  console.log(basket)
-
   useEffect(() => {
+    let itemtotal = basket.map((item) => item.subTotal * 1)
+    let subtotals =itemtotal.reduce((prev, curr) => prev+curr)
+    setSubTotal(subtotals)
+  },[basket])
 
-  }, [basket])
 
 
 
-  function subtotal(items) {
-    return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-  }
-  const invoiceSubtotal = subtotal(basket);
 
 
   return (
@@ -112,7 +113,7 @@ export default function CartDetail() {
                           <TableRow>
                               <TableCell rowSpan={3} />
                               <TableCell colSpan={2}>Subtotal</TableCell>
-                              <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
+                              <TableCell align="right">{subTotal}</TableCell>
                           </TableRow>
 
 
