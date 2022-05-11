@@ -132,13 +132,12 @@ const NewOrderContextProvider = ({children}) => {
 
     const handleSubmitOrder = async()=>{
         const paramsNewOrder = new URLSearchParams()
+        const paramsBasket = new URLSearchParams()
+
+    
 
 
 
-
-
-
-        
         // user Auth
         const user = JSON.parse(localStorage.getItem('user'))
         const token = user.user.api_key 
