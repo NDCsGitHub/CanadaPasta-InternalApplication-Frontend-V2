@@ -28,14 +28,16 @@ export default function CartDetail() {
     let finalTotal =subtotals * (TAX_RATE+1)
     let taxValue = finalTotal * TAX_RATE
 
-
     setTaxAmount(fixNum(taxValue))
     setTotal((prev)=> fixNum(finalTotal))
     setSubTotal(subtotals)
   },[basket])
 
 
+  const handleDeleteItem =() =>{
 
+    
+  }
 
 
 
