@@ -65,6 +65,7 @@ export default function CartDetail() {
             </Button>
           </div>
         ) : (
+              <div className='tableContainer'>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} >
 
@@ -137,6 +138,19 @@ export default function CartDetail() {
                       </TableBody>
                     </Table>
                 </TableContainer>
+                
+                            
+                <Button 
+                  className='addToBasketButton' 
+                  variant="contained" 
+                  onClick={(e)=>{
+
+                  }}
+                >
+                  Submit Order!
+                </Button>
+
+              </div>
         )}
 
     </div>

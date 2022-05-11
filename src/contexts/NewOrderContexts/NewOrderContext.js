@@ -103,11 +103,6 @@ const NewOrderContextProvider = ({children}) => {
     }
 
 
-
-
-
-
-
     /*************************BASKET INFO: END******************************/
 
 
@@ -118,17 +113,14 @@ const NewOrderContextProvider = ({children}) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
     /*************************API CALL : START******************************/ 
+
+
+    useEffect(() => {
+        console.log(orderBasket)
+        console.log(orderInfo)
+
+    }, [orderBasket,orderInfo])
 
 
 
