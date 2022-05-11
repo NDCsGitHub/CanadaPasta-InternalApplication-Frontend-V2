@@ -152,7 +152,8 @@ const NewOrderContextProvider = ({children}) => {
                 setBasketModel,
                 subTotal,
                 setSubTotal,
-
+                total, 
+                setTotal
             }}
         >
 

@@ -13,46 +13,22 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import {useNewOrderContext} from '../../../../contexts/NewOrderContexts/NewOrderContext'
 
+const TAX_RATE = 0.13;
 
 
-
-// const TAX_RATE = 0.13;
-
-// function ccyFormat(num) {
-//   return `${num.toFixed(2)}`;
-// }
-
-// function priceRow(qty, unit) {
-//   return qty * unit;
-// }
-
-// function createRow(desc, qty, unit) {
-//   const price = priceRow(qty, unit);
-//   return { desc, qty, unit, price };
-// }
-
-
-// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
-
-
-// function subtotal(items) {
-//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-// }
 
 
 export default function CartDetail() {
-
-  const {subTotal, setSubTotal } = useNewOrderContext()
+  const {subTotal, setSubTotal, total, setTotal } = useNewOrderContext()
   const {basket, setBasket} = useProductCatalogContext()
-  
+
   useEffect(() => {
     let itemtotal = basket.map((item) => item.subTotal * 1)
     let subtotals =itemtotal.reduce((prev, curr) => prev+curr)
+    let finalTotal = subtotals * TAX_RATE
+    setTotal((prev)=> finalTotal)
     setSubTotal(subtotals)
   },[basket])
-
 
 
 
@@ -116,12 +92,7 @@ export default function CartDetail() {
                               <TableCell align="right">{subTotal}</TableCell>
                           </TableRow>
 
-
-
-
-
-
-                          {/* <TableRow>
+                          <TableRow>
                               <TableCell>Tax</TableCell>
                               <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                               <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
@@ -129,8 +100,8 @@ export default function CartDetail() {
 
                           <TableRow>
                               <TableCell colSpan={2}>Total</TableCell>
-                              <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                          </TableRow> */}
+                              <TableCell align="right">{total}</TableCell>
+                          </TableRow>
                           
                       </TableBody>
                     </Table>
