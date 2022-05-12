@@ -61,7 +61,6 @@ const NewOrderContextProvider = ({children}) => {
             notes:'',
             orderDates:today,
             orderDiscount:'',
-            orderID:'',
             orderStatus:'processing',
             orderTotal:total,
             originalTotal:'',
