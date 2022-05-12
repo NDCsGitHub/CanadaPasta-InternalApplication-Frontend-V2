@@ -172,16 +172,16 @@ const NewOrderContextProvider = ({children}) => {
         try{
             const respOrderInfo = await axios.post('http://localhost/v1/index.php/insert_new_order', paramsNewOrder,
             {
-                header:{
-                    'Authroization':token,
-                    'Context-Type':'application/x-www-form-urlencoded'
+                headers:{
+                    'Authorization': `${token}`,
+                    'Content-Type':'application/x-www-form-urlencoded',
                 }
             })
 
 
             const respBasket = await axios.post('http://localhost/v1/index.php/update_items_with_order', itemsWithOrder,
             {
-                header:{
+                headers:{
                     'Authorization':token,
                     'Content-Type': 'application/json'
                 }
@@ -192,17 +192,18 @@ const NewOrderContextProvider = ({children}) => {
 
 
 
-            const errors = await Promise.all([respOrderInfo, respBasket]).then((value) => {
-                return value.filter((item) => item.data.error = true)
-            })
+            // const errors = await Promise.all([respOrderInfo, respBasket]).then((value) => {
+            //     return value.filter((item) => item.data.error = true)
+            // })
 
-            if(errors.length > 0){
-                alert(errors[0].data.message)
-            }else{
-                alert('Thank you! Order has been sent!')
-            }
+            // if(errors.length > 0){
+            //     alert(errors[0].data.message)
+            // }else{
+            //     alert('Thank you! Order has been sent!')
+            // }
 
-
+            console.log(respOrderInfo)
+            console.log(respBasket)
 
 
             
