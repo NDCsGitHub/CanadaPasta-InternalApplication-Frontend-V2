@@ -69,13 +69,14 @@ const NewOrderContextProvider = ({children}) => {
             shipping_address:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
         })
 
+        
     },[currentCustomer,deliveryDate])
 
     // test the results, remove this later
     useEffect(()=>{
         // console.log(orderInfo)
     },[orderInfo])
-    
+
 
     /*************************ORDER INFO: END*********************************/
 
