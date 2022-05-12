@@ -133,7 +133,8 @@ const NewOrderContextProvider = ({children}) => {
     const handleSubmitOrder = async()=>{
         // user Auth
         const user = JSON.parse(localStorage.getItem('user'))
-        const token = user.user.api_key 
+        const token = user.user.api_key     
+        console.log(token)
 
         //create common id
         const uniqueID = uuid()
