@@ -75,6 +75,7 @@ const NewOrderContextProvider = ({children}) => {
     useEffect(()=>{
         // console.log(orderInfo)
     },[orderInfo])
+    
 
     /*************************ORDER INFO: END*********************************/
 
