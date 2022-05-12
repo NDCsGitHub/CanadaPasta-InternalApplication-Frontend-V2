@@ -63,7 +63,7 @@ const NewOrderContextProvider = ({children}) => {
             orderDiscount:'',
             orderID:'',
             orderStatus:'processing',
-            orderTotal:'',
+            orderTotal:total,
             originalTotal:'',
             paymentMethod:'',
             pickupLocation:'',
@@ -144,7 +144,6 @@ const NewOrderContextProvider = ({children}) => {
         for(const key in orderInfo){
             paramsNewOrder.append(key, orderInfo[key] )
         }
-        paramsNewOrder.append('orderTotal', total )
         paramsNewOrder.append('orderId', uniqueID )
         paramsNewOrder.append('salesFirstName', user.user.first_name )
         paramsNewOrder.append('salesLastName', user.user.last_name )
@@ -189,6 +188,10 @@ const NewOrderContextProvider = ({children}) => {
             })
 
 
+
+
+
+
             const errors = await Promise.all([respOrderInfo, respBasket]).then((value) => {
                 return value.filter((item) => item.data.error = true)
             })
@@ -201,6 +204,8 @@ const NewOrderContextProvider = ({children}) => {
 
 
 
+
+            
         }catch(error){
 
             alert(error.response.data.message)
