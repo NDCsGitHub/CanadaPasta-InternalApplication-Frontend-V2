@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import moment from 'moment';
 import { useProductCatalogContext } from './ProductCatalogContext';
 import {v4 as uuid} from 'uuid'
-
+import axios from 'axios'
 
 
 const NewOrderContext = React.createContext()
@@ -132,14 +132,11 @@ const NewOrderContextProvider = ({children}) => {
 
 
     const handleSubmitOrder = async()=>{
-
         // user Auth
         const user = JSON.parse(localStorage.getItem('user'))
         const token = user.user.api_key 
-        // console.log(token)
-        // console.log(user.user)
 
-        //create id
+        //create common id
         const uniqueID = uuid()
 
         //params for order info
@@ -153,46 +150,63 @@ const NewOrderContextProvider = ({children}) => {
         paramsNewOrder.append('salesLastName', user.user.last_name )
         paramsNewOrder.append('salesEmail', user.user.email )
 
-        // params for basket info
-        const paramsBasket = new FormData();
+        // body for basket info
+        let itemsWithOrder = {
+            'order_id':uniqueID,
+            "items":[
+                ...orderBasket
+            ]
+        }
 
-        orderBasket.map((item, index) => (
-            paramsBasket.append(index,JSON.stringify(item))
-        ))
 
 
-
-        // orderBasket.forEach((item) => {
-        //     for(const key in item ){
-        //         // console.log(orderBasket)
-        //         console.log(key)
-        //         console.log(item[key])
-        //     }
-        // })
-     
-
-        // // check params
+    
+        // check params
         for(const key of paramsNewOrder){
             console.log(key)
         }
-        console.log(paramsBasket)
-        for(const key of paramsBasket){
-            console.log(key)
+        // check Body
+        console.log(itemsWithOrder)
+
+
+
+        try{
+            const respOrderInfo = await axios.post('http://localhost/v1/index.php/insert_new_order', paramsNewOrder,
+            {
+                header:{
+                    'Authroization':token,
+                    'Context-Type':'application/x-www-form-urlencoded'
+                }
+            })
+
+
+            const respBasket = await axios.post('http://localhost/v1/index.php/update_items_with_order', itemsWithOrder,
+            {
+                header:{
+                    'Authorization':token,
+                    'Content-Type': 'application/json'
+                }
+            })
+
+
+            const errors = await Promise.all([respOrderInfo, respBasket]).then((value) => {
+                return value.filter((item) => item.data.error = true)
+            })
+
+            if(errors.length > 0){
+                alert(errors[0].data.message)
+            }else{
+                alert('Thank you! Order has been sent!')
+            }
+
+
+
+        }catch(error){
+
+            alert(error.response.data.message)
+
+
         }
-
-
-
-        // try{
-        //     // const respOrderInfo = axios.post('')
-
-
-
-        // }catch(error){
-
-
-
-
-        // }
 
 
 
