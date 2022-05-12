@@ -123,7 +123,7 @@ const NewCustomerContextProvider = ({children}) => {
         }else{
             alert('Thank you! Your submission has been sent')
         }
-
+        
         handleClear()
     }catch(error){
         alert(error.response.data.message)

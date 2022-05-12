@@ -50,24 +50,25 @@ const NewOrderContextProvider = ({children}) => {
         let actualDeliveryDate = !deliveryDate? today : moment((deliveryDate._d)).format("MM-DD-YYYY")
 
         setOrderInfo({
-            billingAddress: billingAddress,
-            businessNameCn:currentCustomer.business_name_cn,
-            businessNameEn:currentCustomer.business_name_en,
-            customerId:currentCustomer.id,
-            customerPhoneNumber:currentCustomer.contact_phone,
-            customerType:currentCustomer.type,
-            deliveryMethod:'',
-            editVersion:0,
-            notes:'',
-            orderDates:today,
-            orderDiscount:'',
-            orderStatus:'processing',
-            orderTotal:total,
-            originalTotal:'',
-            paymentMethod:'',
-            pickupLocation:'',
-            shipOrPickDate:actualDeliveryDate,
-            shippingAddress:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
+            billing_address: billingAddress,
+            business_name_cn:currentCustomer.business_name_cn,
+            business_name_en:currentCustomer.business_name_en,
+            customer_id:currentCustomer.id,
+            customer_phone_number:currentCustomer.contact_phone,
+            customer_type:currentCustomer.type,
+            delivery_method:'',
+            edit_version:0,
+            discount:'',
+            info:'',
+            order_date:today,
+            // orderDiscount:'',
+            status:'processing',
+            total:total,
+            // originalTotal:'',
+            payment_method:'',
+            pick_up_location:'',
+            shipping_pick_up_time:actualDeliveryDate,
+            shipping_address:`${currentCustomer.shipping_street_address}, ${currentCustomer.shipping_city}, ${currentCustomer.shipping_province}, ${currentCustomer.shipping_country}, ${currentCustomer.shipping_postal}`,
         })
 
     },[currentCustomer,deliveryDate])
@@ -145,8 +146,8 @@ const NewOrderContextProvider = ({children}) => {
             paramsNewOrder.append(key, orderInfo[key] )
         }
         paramsNewOrder.append('orderId', uniqueID )
-        paramsNewOrder.append('salesFirstName', user.user.first_name )
-        paramsNewOrder.append('salesLastName', user.user.last_name )
+        paramsNewOrder.append('sales_first_name', user.user.first_name )
+        paramsNewOrder.append('sales_last_name', user.user.last_name )
         paramsNewOrder.append('salesEmail', user.user.email )
 
         // body for basket info
@@ -186,9 +187,6 @@ const NewOrderContextProvider = ({children}) => {
                     'Content-Type': 'application/json'
                 }
             })
-
-
-
 
 
 
