@@ -51,9 +51,9 @@ export default function OrderInfo() {
 
                 <TextField required
                     label="Customer Type"
-                    name='customerType'
+                    name='customer_type'
                     margin="dense"
-                    value ={orderInfo.customerType ||''}
+                    value ={orderInfo.customer_type ||''}
                     onChange={(e)=>{
                         handleOrderInfo(e)
                     }}
@@ -62,9 +62,9 @@ export default function OrderInfo() {
                 <TextField required
                     sx={{marginLeft:'0.5rem', }}
                     label="Phone #"
-                    name='customerPhoneNumber'
+                    name='customer_phone_number'
                     margin="dense"
-                    value = {orderInfo.customerPhoneNumber || ''}
+                    value = {orderInfo.customer_phone_number || ''}
                     onChange={(e)=>{
                         handleOrderInfo(e)
                     }}
@@ -73,9 +73,9 @@ export default function OrderInfo() {
                 <TextField required
                     sx={{marginLeft:'0.5rem', width:'40rem', }}
                     label="Billing Address"
-                    name='billingAddress'
+                    name='billing_address'
                     margin="dense"
-                    value = {orderInfo.billingAddress || ''}
+                    value = {orderInfo.billing_address || ''}
                     onChange={(e)=>{
                         handleOrderInfo(e)
                     }}
@@ -90,7 +90,7 @@ export default function OrderInfo() {
                     sx={{marginLeft:'0.5rem', width:'16rem'}}
                     label="Delivery Method"
                     margin="dense"
-                    name='deliveryMethod'
+                    name='delivery_method'
                     defaultValue={''}
                     onChange={(e)=>{
                         handleOrderInfo(e)
@@ -105,7 +105,7 @@ export default function OrderInfo() {
                         label="Shippping/Picking Date"
                         inputFormat="MM/DD/YYYY"
                         value={deliveryDate}
-                        name='shipOrPickDate'
+                        name='shipping_pick_up_time'
                         onChange={(value) => {
                             handleChangeDate(value)
                             
@@ -118,7 +118,7 @@ export default function OrderInfo() {
                     required
                     sx={{marginLeft:'0.5rem', width:'16rem'}}
                     label="Payment Method"
-                    name='paymentMethod'
+                    name='payment_method'
                     margin="dense"
                     defaultValue={''}
                     onChange={(e)=>{
@@ -132,7 +132,7 @@ export default function OrderInfo() {
 
               
                 {(() => {
-                    switch (orderInfo.deliveryMethod) {
+                    switch (orderInfo.delivery_method){
                         
                         case 'pickup':
                             return (
@@ -140,7 +140,7 @@ export default function OrderInfo() {
                                 required
                                 sx={{marginLeft:'0.5rem', width:'16rem'}}
                                 label="Pick Up Location"
-                                name='pickupLocation'
+                                name='pick_up_location'
                                 margin="dense"
                                 defaultValue={''}
                                 onChange={(e)=>{
@@ -156,9 +156,9 @@ export default function OrderInfo() {
                                 <TextField required
                                     sx={{marginLeft:'0.5rem', width:'40rem', }}
                                     label="Shipping Address"
-                                    name='shippingAddress'
+                                    name='shipping_pick_up_time'
                                     margin="dense"
-                                    value = {orderInfo.billingAddress || ''}
+                                    value = {orderInfo.shipping_address || ''}
                                     onChange={(e)=>{
                                         handleOrderInfo(e)
                                     }}
