@@ -8,21 +8,21 @@ import {
 } from 'react-router-dom'
 import Home from './components/Home/Home'
 import Dashboard from './components/Dashboard/Dashboard'
-import {DashboardContextProvider} from './contexts/DashboardContext'
-import {HomeContextProvider} from './contexts/HomeContext'
+import { DashboardContextProvider } from './contexts/DashboardContext'
+import { HomeContextProvider } from './contexts/HomeContext'
 import PrivateRoute from './components/PrivateRoute.js';
 
 
 
 export default function App() {
-  
+
   // add motionframer in later when time allowed, will need to use react router v6 and location hook
 
   return (
     <Router>
       <Routes>
 
-        <Route 
+        <Route
           path="/"
           element={
             <HomeContextProvider>
@@ -35,9 +35,9 @@ export default function App() {
           path='/dashboard'
           element={
             <PrivateRoute>
-                <DashboardContextProvider>
-                  <Dashboard />
-                </DashboardContextProvider>
+              <DashboardContextProvider>
+                <Dashboard />
+              </DashboardContextProvider>
             </PrivateRoute>
           }
         />
