@@ -1,41 +1,41 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
 
 
 
 const NewProductContext = React.createContext();
 
-const useNewProductContext = () =>{
+const useNewProductContext = () => {
     return useContext(NewProductContext)
 }
 
 
 
-const NewProductContextProvider = ({children}) => {
+const NewProductContextProvider = ({ children }) => {
 
     // state for storing input data
     const [newProductInfo, setNewProductInfo] = useState({
-        product_name_en:'',
-        product_name_cn:'',
-        price:'',
-        product_type:'',
-        description_en:'',
-        description_cn:'',
-        comment:'',
-    })  
+        product_name_en: '',
+        product_name_cn: '',
+        price: '',
+        product_type: '',
+        description_en: '',
+        description_cn: '',
+        comment: '',
+    })
 
     // save input values to input state
-    const handleProductInfo =(e)=>{
+    const handleProductInfo = (e) => {
         const inputValue = e.target.value
         const inputName = e.target.name
-        
+
         setNewProductInfo({
             ...newProductInfo,
-            [inputName]:inputValue
+            [inputName]: inputValue
         })
     }
 
-    const handleSubmitProduct = async() =>{
+    const handleSubmitProduct = async () => {
 
         const params = new URLSearchParams();
         params.append('product_name_en', newProductInfo.product_name_en)
@@ -48,26 +48,26 @@ const NewProductContextProvider = ({children}) => {
 
         const user = JSON.parse(localStorage.getItem('user'))
         const token = user.user.api_key
-        try{
+        try {
             const resp = await axios.post('http://localhost/v1/index.php/insert_new_product', params,
-            {
-                headers:{
-                    'Authorization': `${token}`,
-                    'Content-Type':'application/x-www-form-urlencoded',
-                    'Access-Control-Allow-Origin':'*',
-                }
-            })
+                {
+                    headers: {
+                        'Authorization': `${token}`,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Access-Control-Allow-Origin': '*',
+                    }
+                })
 
             console.log(resp.data)
-            if(resp.data.error === true){
+            if (resp.data.error === true) {
                 alert(resp.data.message)
-            }else if(resp.data.error === false){
+            } else if (resp.data.error === false) {
                 alert('Thank You! New product added')
-            }else{
+            } else {
                 alert('Operation Failed, please try again')
             }
 
-        }catch(error){
+        } catch (error) {
             alert(error.response.data.message)
         }
     }
@@ -77,7 +77,7 @@ const NewProductContextProvider = ({children}) => {
 
     return (
         <NewProductContext.Provider
-            value = {{
+            value={{
                 newProductInfo,
                 setNewProductInfo,
                 handleProductInfo,
@@ -89,4 +89,4 @@ const NewProductContextProvider = ({children}) => {
     )
 }
 
-export {NewProductContextProvider, useNewProductContext}
+export { NewProductContextProvider, useNewProductContext }

@@ -1,7 +1,27 @@
-.TESTING{
+.TESTING {
     margin-right: 15rem !important;
 }
 
-.BUTTON{
-    margin-left:50rem !important;;
+.BUTTON {
+    margin-left: 50rem !important;
+    ;
+}
+
+
+
+.productListContainer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+}
+
+
+.disabledIcon {
+    opacity: 0 !important;
+
+}
+
+
+.css-35ug3-MuiButtonBase-root-MuiAccordionSummary-root.Mui-disabled {
+    opacity: 1 !important;
 }

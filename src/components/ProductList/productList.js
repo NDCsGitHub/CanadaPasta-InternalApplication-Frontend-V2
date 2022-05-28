@@ -5,44 +5,100 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "./productlist.css";
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import { useProductListContext } from '../../contexts/ProductListContext'
+import List from '@mui/material/List';
+import { styled } from '@mui/material/styles';
+
+
+const LabelTypography = styled('Typography')(({ theme }) => ({
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  width: '100%',
+}));
+
+
+
+
+
 
 export default function ProductList() {
-  function onClickEdit(event) {
-    event.stopPropagation();
-    // Handle click here
-  }
-  return (
-    <div>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className ="TESTING">Product Name:</Typography>
-          <Typography className ="TESTING">产品:</Typography>
-          <Typography className ="TESTING">Price:</Typography>
 
-          <IconButton className = "BUTTON"
-              onClick={onClickEdit}
-              color="warning"
-              aria-label="Edit"
-            >
-              <EditIcon />
-            </IconButton>
+  const { testing } = useProductListContext()
+
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
+
+  return (
+    <div >
+      <Accordion
+        disabled
+      >
+        <AccordionSummary
+          sx={{
+            background: 'rgba(255, 202, 64, 1)'
+          }}
+          expandIcon={< ExpandMoreIcon className='disabledIcon' />}
+        >
+          <LabelTypography >Count</LabelTypography>
+          <LabelTypography>Order ID</LabelTypography>
+          <LabelTypography>Business Name</LabelTypography>
+          <LabelTypography>Shipping/Pickup Date</LabelTypography>
+          <LabelTypography>Order Status</LabelTypography>
+
         </AccordionSummary>
+
         <AccordionDetails>
-          
-          <Typography >Description:</Typography>
-          <Typography ></Typography>
-          <Typography>介绍:</Typography>
+
         </AccordionDetails>
+
       </Accordion>
-      
-    </div>
+
+
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <AccordionSummary
+          className='testing'
+          sx={{
+
+          }}
+          expandIcon={< ExpandMoreIcon />}
+        >
+          <Typography
+            sx={{
+              width: '100%',
+            }}
+          >Count</Typography>
+          <Typography sx={{
+            width: '100%',
+          }}
+          >Order ID</Typography>
+          <Typography
+            sx={{
+              width: '100%',
+            }}>Business Name</Typography>
+          <Typography
+            sx={{
+              width: '100%',
+            }}>Shipping/Pickup Date</Typography>
+          <Typography
+            sx={{
+              width: '100%',
+            }}>Order Status</Typography>
+
+        </AccordionSummary>
+
+        <AccordionDetails>
+
+        </AccordionDetails>
+
+      </Accordion>
+
+
+
+    </div >
+
   );
 }
