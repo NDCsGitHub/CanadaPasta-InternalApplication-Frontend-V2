@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 const BusinessOrderInputContext = React.createContext();
@@ -7,7 +7,7 @@ const useBusinessOrderInputContext = () => {
 }
 
 
-const BusinessOrderInputContextProvider = ({children}) => {
+const BusinessOrderInputContextProvider = ({ children }) => {
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState([]);
     const loading = open && options.length === 0;
@@ -17,20 +17,20 @@ const BusinessOrderInputContextProvider = ({children}) => {
 
         (async () => {
             const user = JSON.parse(localStorage.getItem('user'))
-            const token = user.user.api_key 
-            try{
+            const token = user.user.api_key
+            try {
                 const customerResp = await axios.get('http://localhost/v1/index.php/fetch_all_customers',
-                {
-                    headers:{
-                    'Authorization': `${token}`,
-                    'Content-Type':'application/x-www-form-urlencoded',
-                    }
-                })
-                
+                    {
+                        headers: {
+                            'Authorization': `${token}`,
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        }
+                    })
+
 
                 if (active) setOptions([...customerResp.data.data]);
-                
-            }catch(error){
+
+            } catch (error) {
                 console.log(error)
             }
 
@@ -40,7 +40,7 @@ const BusinessOrderInputContextProvider = ({children}) => {
             active = false;
         };
     }, [loading]);
-  
+
     useEffect(() => {
         if (!open) setOptions([]);
     }, [open]);
@@ -70,5 +70,5 @@ const BusinessOrderInputContextProvider = ({children}) => {
 
 
 
-export {BusinessOrderInputContextProvider, useBusinessOrderInputContext}
+export { BusinessOrderInputContextProvider, useBusinessOrderInputContext }
 
