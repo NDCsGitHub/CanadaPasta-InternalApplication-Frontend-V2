@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
 
@@ -12,6 +12,39 @@ const useProductListContext = () => {
 
 
 const ProductListContextProvider = ({ children }) => {
+
+    // all product list 
+    const [productList, setProductList] = useState()
+    // loading 
+    const [loading, setLoading] = useState(false)
+
+
+
+    // fetch all product
+    const fetchAllProduct = async () => {
+        setLoading(true)
+        const user = JSON.parse(localStorage.getItem('user'))
+        const token = user.user.api_key
+
+        try {
+            const respProducts = await axios.get('http://localhost/v1/index.php/fetch_all_products',
+                {
+                    headers: {
+                        'Authorization': token,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    }
+                })
+
+            setLoading(false)
+            console.log(respProducts.data.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchAllProduct()
+    }, [])
 
 
 
