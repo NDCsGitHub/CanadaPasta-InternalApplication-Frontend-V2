@@ -13,7 +13,7 @@ const useProductListContext = () => {
 
 const ProductListContextProvider = ({ children }) => {
 
-
+    const [productList, setProductList] = useState()
 
     return (
         <ProductListContext.Provider
