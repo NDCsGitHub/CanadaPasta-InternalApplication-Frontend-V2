@@ -16,7 +16,7 @@ const ProductListContextProvider = ({ children }) => {
     // all product list 
     const [productList, setProductList] = useState()
     // loading 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState()
 
 
 
@@ -36,9 +36,12 @@ const ProductListContextProvider = ({ children }) => {
                 })
 
             setLoading(false)
+            setProductList(respProducts.data.data)
             console.log(respProducts.data.data)
+
         } catch (error) {
             console.log(error)
+            alert(error)
         }
     }
 
@@ -46,12 +49,15 @@ const ProductListContextProvider = ({ children }) => {
         fetchAllProduct()
     }, [])
 
-
+    useEffect(() => {
+        console.log(productList)
+    }, [productList])
 
     return (
         <ProductListContext.Provider
             value={{
-
+                productList,
+                loading,
             }}
         >
             {children}
