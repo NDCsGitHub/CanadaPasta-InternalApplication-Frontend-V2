@@ -1,17 +1,17 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 
 
 
 const ProductCatalogContext = React.createContext()
-const useProductCatalogContext = () =>{
+const useProductCatalogContext = () => {
   return useContext(ProductCatalogContext)
 }
 
 
 
-const ProductCatalogContextProvider =({children}) => {
+const ProductCatalogContextProvider = ({ children }) => {
 
   /***********************PRODUCT CARD START**************************/
 
@@ -25,16 +25,16 @@ const ProductCatalogContextProvider =({children}) => {
   // productType 
   const [productType, setProductType] = useState('')
   useEffect(() => {
-    if(tabValue === 0){
+    if (tabValue === 0) {
       setProductType('noodle')
-    }else if(tabValue === 1){
+    } else if (tabValue === 1) {
       setProductType('chef at home')
-    }else if(tabValue === 2){
+    } else if (tabValue === 2) {
       setProductType('handcrafted food')
-    }else{
+    } else {
       setProductType('ramen seasoning')
     }
-  },[tabValue])
+  }, [tabValue])
 
 
   // loader
@@ -44,42 +44,40 @@ const ProductCatalogContextProvider =({children}) => {
   //active product list to be mapped
   const [productList, setProductList] = useState([])
 
-  
+
   // function fetch product
-  const fetchProduct = async(productType) =>{
+  const fetchProduct = async (productType) => {
     setLoading(1)
     const user = JSON.parse(localStorage.getItem('user'))
     const token = user.user.api_key
-    try{
+    try {
       const respProducts = await axios.get(`http://localhost/v1/index.php/fetch_products_of_type?product_type=${productType}`,
-      {
-        headers:{
+        {
+          headers: {
             'Authorization': `${token}`,
-            'Content-Type':'application/x-www-form-urlencoded',
-            'Access-Control-Allow-Origin':'*',
-        }
-      })
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Access-Control-Allow-Origin': '*',
+          }
+        })
       setLoading(0)
-      if(respProducts.data.error === false){
+      if (respProducts.data.error === false) {
         setProductList([
           ...respProducts.data.data
         ])
-      }else{
+      } else {
         alert(respProducts.data.message)
       }
-    }catch(error){
-        console.log(error)
+    } catch (error) {
+      console.log(error)
     }
   }
 
   // 
-  useEffect(()=>{
+  useEffect(() => {
     fetchProduct(productType)
-  },[productType])
+  }, [productType])
 
-/*********************************PRODUCT CARD END****************************************/
-
-
+  /*********************************PRODUCT CARD END****************************************/
 
 
 
@@ -91,7 +89,9 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 
-/**************************PRODUCT SELECTION OPTION MODEL START***************************/
+
+
+  /**************************PRODUCT SELECTION OPTION MODEL START***************************/
   // basket Item
   const [basket, setBasket] = useState([])
 
@@ -104,16 +104,17 @@ const ProductCatalogContextProvider =({children}) => {
   const [discount, setDiscount] = useState(100)
   const [subTotal, setSubtotal] = useState(0)
 
-  useEffect(()=>{
-    let total = quantity * (discount/100) * activeModel.price;
-    setSubtotal( (Math.round(total * 100) / 100).toFixed(2) )
-  },[quantity,discount, activeModel])
+  useEffect(() => {
+    let total = quantity * (discount / 100) * activeModel.price;
+    setSubtotal((Math.round(total * 100) / 100).toFixed(2))
+  }, [quantity, discount, activeModel])
 
   // handle add to basket
-  function handleAdd(){
+  function handleAdd() {
     setBasket([
       ...basket,
-      {...activeModel,
+      {
+        ...activeModel,
         quantity,
         discount,
         subTotal,
@@ -124,17 +125,17 @@ const ProductCatalogContextProvider =({children}) => {
     setDiscount(100)
     setSubtotal(0)
   }
-  
+
   useEffect(() => {
     console.log(basket)
     console.log(basket.length)
-  },[basket])
+  }, [basket])
 
 
 
-/**************************PRODUCT SELECTION OPTION MODEL END***************************/
+  /**************************PRODUCT SELECTION OPTION MODEL END***************************/
 
-  return(
+  return (
     <ProductCatalogContext.Provider
       value={{
         tabValue,
@@ -149,7 +150,7 @@ const ProductCatalogContextProvider =({children}) => {
         quantity,
         setQuantity,
         discount,
-        setDiscount, 
+        setDiscount,
         subTotal,
         basket,
         setBasket,
@@ -163,4 +164,4 @@ const ProductCatalogContextProvider =({children}) => {
 
 
 
-export{ProductCatalogContextProvider, useProductCatalogContext}
+export { ProductCatalogContextProvider, useProductCatalogContext }
