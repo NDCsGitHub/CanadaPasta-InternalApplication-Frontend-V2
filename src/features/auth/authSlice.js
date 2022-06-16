@@ -22,7 +22,24 @@ const initialState = {
 
 
 // Login user, export to use it in other components
+const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
+    try {
+        return await authService.login(user)
+    } catch (error) {
 
+        // check for error message
+        const message = (
+            error.response &&
+            error.response.data &&
+            error.response.data.message
+        ) || error.message || error.toString()
+
+
+        // return and save the message in the state
+        return thunkAPI.rejectWithValue(message)
+
+    }
+})
 
 
 
@@ -48,7 +65,12 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(register.pending, (state) => {
+            // logout case
+            .addCase(logout.fulfilled, (state) => {
+                state.user = null
+            })
+            // login cases
+            .addCase(login.pending, (state) => {
                 state.isLoading = true
             })
     }
@@ -56,5 +78,13 @@ const authSlice = createSlice({
 const { reset } = authSlice.actions
 
 
+// export reset and reducer
+export {
+    authSlice,
+    reset,
+    logout,
+    login,
+}
 
-
+// export reducer to global state store.js
+export default authSlice.reducer
