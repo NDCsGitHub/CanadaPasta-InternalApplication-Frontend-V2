@@ -6,6 +6,7 @@ import authService from './authService'
 const user = JSON.parse(localStorage.getItem('user'))
 
 
+
 // define initial state
 const initialState = {
     user: user ? user : null,
@@ -16,7 +17,9 @@ const initialState = {
 }
 
 
+
 // Register User, export to use it in other components
+
 
 
 
@@ -24,7 +27,9 @@ const initialState = {
 // Login user, export to use it in other components
 const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try {
+
         return await authService.login(user)
+
     } catch (error) {
 
         // check for error message
@@ -72,6 +77,17 @@ const authSlice = createSlice({
             // login cases
             .addCase(login.pending, (state) => {
                 state.isLoading = true
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.user = action.payload
+            })
+            .addCase(login.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.user = null
             })
     }
 })

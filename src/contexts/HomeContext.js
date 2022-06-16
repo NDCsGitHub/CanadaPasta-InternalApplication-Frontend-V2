@@ -98,7 +98,6 @@ const HomeContextProvider = ({ children }) => {
 
   // error msg and alert
   const [toggleLoginErrorMsg, setToggleLoginErrorMsg] = useState(false)
-  const [errorLoginMsgText, setErrorLoginMsgText] = useState()
 
   // login input state
   const [loginInfo, setLoginInfo] = useState({
@@ -115,6 +114,7 @@ const HomeContextProvider = ({ children }) => {
       [infoName]: infoText
     })
   }
+
 
   // submit login info to login endpoint
   const handleLoginSubmit = async () => {
@@ -137,17 +137,13 @@ const HomeContextProvider = ({ children }) => {
 
       if (resp.data.error === true) {
         setToggleLoginErrorMsg(true)
-        setErrorLoginMsgText(resp.data.message)
       } else {
         localStorage.setItem("user", JSON.stringify(resp.data))
         navigate('/dashboard')
-        let stuff = localStorage.getItem('user')
-        console.log(stuff)
       }
 
     } catch (error) {
       setToggleLoginErrorMsg(true)
-      setErrorLoginMsgText(error.response.data.message)
     }
   }
 
@@ -183,7 +179,7 @@ const HomeContextProvider = ({ children }) => {
         handleLoginSubmit,
         toggleLoginErrorMsg,
         setToggleLoginErrorMsg,
-        errorLoginMsgText,
+
       }}
     >
       {children}

@@ -1,15 +1,16 @@
 import React from 'react'
-import {Navigate} from 'react-router-dom'
-
+import { Navigate } from 'react-router-dom'
+// import { useSelector, useDispatch } from 'react-redux'
 
 
 
 export default function PrivateRoute({ children }) {
 
 
-  const token = JSON.parse(localStorage.getItem("user"));
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    token? children : <Navigate to='/' />
+    user ? children : <Navigate to='/' />
   )
 }
