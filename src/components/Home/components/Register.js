@@ -10,10 +10,13 @@ import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { register, reset } from '../../../features/auth/authSlice'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Register() {
+
+  // define navigate
+  const navigate = useNavigate()
 
   //context for toggle register
   const {
@@ -77,15 +80,17 @@ export default function Register() {
       setToggleErrorMsg(true)
       console.log(user)
     }
+
     if (isSuccess) {
       setToggleErrorMsg(false)
+      navigate('/dashboard')
       console.log(user)
     }
 
     dispatch(reset())
 
 
-  }, [user, isError, isSuccess, message, isLoading])
+  }, [user, isError, isSuccess])
 
 
 
