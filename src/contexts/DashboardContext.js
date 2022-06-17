@@ -1,23 +1,23 @@
-import React, { useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 
 
 const DashboardContext = React.createContext()
 
 
 export const useDashboardContext = () => {
-    return useContext(DashboardContext)
+  return useContext(DashboardContext)
 }
 
 
 
-const DashboardContextProvider = ({children}) => {
-  
+const DashboardContextProvider = ({ children }) => {
+
   // state for opening and closing of side menus
   const [open, setOpen] = useState(false);
 
   //state for toggling sidemenu top
   const [sidemenuState, setSidemenuState] = useState('Home');
-  const handleSidemenuState = (text) =>{
+  const handleSidemenuState = (text) => {
     setSidemenuState(text)
   }
 
@@ -26,14 +26,14 @@ const DashboardContextProvider = ({children}) => {
 
   return (
     <DashboardContext.Provider
-        value={{
-          open,
-          setOpen,
-          sidemenuState,
-          handleSidemenuState,
-        }}
+      value={{
+        open,
+        setOpen,
+        sidemenuState,
+        handleSidemenuState,
+      }}
     >
-        {children}
+      {children}
     </DashboardContext.Provider>
   )
 }

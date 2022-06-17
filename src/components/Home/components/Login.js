@@ -26,7 +26,6 @@ export default function Login() {
     setToggleLoginErrorMsg(false);
   };
 
-  // 
 
 
   //context for toggle register
@@ -58,6 +57,7 @@ export default function Login() {
 
   // check for Error
   useEffect(() => {
+
     if (isError) {
       setToggleLoginErrorMsg(true)
     }
@@ -67,8 +67,11 @@ export default function Login() {
       navigate('/dashboard')
     }
 
+    dispatch(reset())
 
-  }, [user, isError, isSuccess, message, isLoading])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isError, isSuccess, isLoading])
 
 
 

@@ -19,7 +19,16 @@ const initialState = {
 
 
 // Register User, export to use it in other components
-
+const Register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
+    try {
+        return await authService.register(userData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 
 
@@ -65,7 +74,6 @@ const authSlice = createSlice({
             state.isLoading = false
             state.isSuccess = false
             state.isError = false
-            state.message = ''
         }
     },
     extraReducers: (builder) => {
@@ -100,6 +108,7 @@ export {
     reset,
     logout,
     login,
+    Register,
 }
 
 

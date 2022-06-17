@@ -116,36 +116,36 @@ const HomeContextProvider = ({ children }) => {
   }
 
 
-  // submit login info to login endpoint
-  const handleLoginSubmit = async () => {
-    setToggleLoginErrorMsg(false)
-    const params = new URLSearchParams();
-    params.append('email', loginInfo.email);
-    params.append('password', loginInfo.password);
+  // // submit login info to login endpoint
+  // const handleLoginSubmit = async () => {
+  //   setToggleLoginErrorMsg(false)
+  //   const params = new URLSearchParams();
+  //   params.append('email', loginInfo.email);
+  //   params.append('password', loginInfo.password);
 
-    try {
-      const resp = await axios.post('http://localhost/v1/index.php/login',
-        params,
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Connection': 'keep-alive',
-          }
-        })
+  //   try {
+  //     const resp = await axios.post('http://localhost/v1/index.php/login',
+  //       params,
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/x-www-form-urlencoded',
+  //           'Connection': 'keep-alive',
+  //         }
+  //       })
 
-      console.log(resp.data)
+  //     console.log(resp.data)
 
-      if (resp.data.error === true) {
-        setToggleLoginErrorMsg(true)
-      } else {
-        localStorage.setItem("user", JSON.stringify(resp.data))
-        navigate('/dashboard')
-      }
+  //     if (resp.data.error === true) {
+  //       setToggleLoginErrorMsg(true)
+  //     } else {
+  //       localStorage.setItem("user", JSON.stringify(resp.data))
+  //       navigate('/dashboard')
+  //     }
 
-    } catch (error) {
-      setToggleLoginErrorMsg(true)
-    }
-  }
+  //   } catch (error) {
+  //     setToggleLoginErrorMsg(true)
+  //   }
+  // }
 
 
 
@@ -176,7 +176,6 @@ const HomeContextProvider = ({ children }) => {
 
         handleLoginInfo,
         loginInfo,
-        handleLoginSubmit,
         toggleLoginErrorMsg,
         setToggleLoginErrorMsg,
 
