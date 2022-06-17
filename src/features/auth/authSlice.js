@@ -19,7 +19,7 @@ const initialState = {
 
 
 // Register User, export to use it in other components
-const Register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
+const register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
     try {
         return await authService.register(userData)
     } catch (error) {
@@ -97,6 +97,22 @@ const authSlice = createSlice({
                 state.message = action.payload
                 state.user = null
             })
+
+            // register user
+            .addCase(register.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(register.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.user = action.payload
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.user = null
+            })
     }
 })
 const { reset } = authSlice.actions
@@ -108,7 +124,7 @@ export {
     reset,
     logout,
     login,
-    Register,
+    register,
 }
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './login.css'
 import Card from '@mui/material/Card';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -20,13 +20,11 @@ export default function Register() {
     showRegister,
     setShowRegister,
     handleRegisterInfo,
-    handleSubmit,
     registerInfo,
     setRegisterInfo,
-    setErrorMsgText,
     setToggleErrorMsg,
     toggleErrorMsg,
-    errorMsgText,
+
   } = useHomeContext()
 
 
@@ -38,24 +36,19 @@ export default function Register() {
       password: '',
       first_name: '',
       last_name: '',
-      user_type: '',
+      account_type: '',
       company: '',
     })
 
-    setToggleErrorMsg(false)
-    setErrorMsgText('')
   }
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+  const handleClose = () => {
     setToggleErrorMsg(false);
   };
 
 
   // dispatch && selector
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
@@ -63,7 +56,38 @@ export default function Register() {
   // submit account registration
   const handleRegister = () => {
 
+    const userData = {
+      Email: registerInfo.email,
+      Password: registerInfo.password,
+      First_Name: registerInfo.first_name,
+      Last_Name: registerInfo.last_name,
+      Account_Type: registerInfo.account_type,
+      Company: registerInfo.company,
+    }
+
+    dispatch(register(userData))
+
   }
+
+
+
+  useEffect(() => {
+
+    if (isError) {
+      setToggleErrorMsg(true)
+      console.log(user)
+    }
+    if (isSuccess) {
+      setToggleErrorMsg(false)
+      console.log(user)
+    }
+
+    dispatch(reset())
+
+
+  }, [user, isError, isSuccess, message, isLoading])
+
+
 
 
 
@@ -80,7 +104,7 @@ export default function Register() {
         <h2>Register</h2>
         <Snackbar open={toggleErrorMsg} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ horizontal: 'center', vertical: 'top' }}>
           <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
-            {errorMsgText}
+            {message}
           </Alert>
         </Snackbar>
 
@@ -134,7 +158,7 @@ export default function Register() {
           <TextField required
             sx={{ margin: '0.5rem' }}
             label="User Type"
-            name='user_type'
+            name='account_type'
             value={registerInfo.user_type}
             onChange={(e) => {
               handleRegisterInfo(e)
@@ -157,13 +181,11 @@ export default function Register() {
         <Button
           className='loginButton'
           variant="contained"
-          onClick={() => {
-            // handleSubmit()
-            handleRegister()
-          }}
+          onClick={() => handleRegister()}
         >
           Sign Up
         </Button>
+
         <Button
           className='loginButton'
           variant="contained"

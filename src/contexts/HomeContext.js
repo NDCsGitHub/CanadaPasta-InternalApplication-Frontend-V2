@@ -15,7 +15,6 @@ const HomeContextProvider = ({ children }) => {
   //Show Register Panel
   const [showRegister, setShowRegister] = useState(false)
   const [toggleErrorMsg, setToggleErrorMsg] = useState(false)
-  const [errorMsgText, setErrorMsgText] = useState()
 
   //register input state to be sent over to backend
   const [registerInfo, setRegisterInfo] = useState({
@@ -23,7 +22,7 @@ const HomeContextProvider = ({ children }) => {
     password: '',
     first_name: '',
     last_name: '',
-    user_type: '',
+    account_type: '',
     company: '',
   })
   // save inputs to objects
@@ -170,9 +169,7 @@ const HomeContextProvider = ({ children }) => {
         registerInfo,
         toggleErrorMsg,
         setToggleErrorMsg,
-        errorMsgText,
         setRegisterInfo,
-        setErrorMsgText,
 
         handleLoginInfo,
         loginInfo,
