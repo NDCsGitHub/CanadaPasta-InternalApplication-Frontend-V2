@@ -37,53 +37,53 @@ const HomeContextProvider = ({ children }) => {
   }
 
 
-  //submit register info api call
-  const handleSubmit = async () => {
-    setToggleErrorMsg(false)
-    setErrorMsgText('')
-    const params = new URLSearchParams();
-    params.append('email', registerInfo.email);
-    params.append('password', registerInfo.password);
-    params.append('first_name', registerInfo.first_name);
-    params.append('last_name', registerInfo.last_name)
-    params.append('user_type', registerInfo.user_type)
-    params.append('company', registerInfo.company)
+  // //submit register info api call
+  // const handleSubmit = async () => {
+  //   setToggleErrorMsg(false)
+  //   setErrorMsgText('')
+  //   const params = new URLSearchParams();
+  //   params.append('email', registerInfo.email);
+  //   params.append('password', registerInfo.password);
+  //   params.append('first_name', registerInfo.first_name);
+  //   params.append('last_name', registerInfo.last_name)
+  //   params.append('user_type', registerInfo.user_type)
+  //   params.append('company', registerInfo.company)
 
-    try {
-      const resp = await axios.post('http://localhost/v1/index.php/register',
-        params,
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Connection': 'keep-alive',
-          }
-        })
-
-
-
-      if (resp.data.error === true) {
-        setToggleErrorMsg(true)
-        setErrorMsgText(resp.data.message)
-      } else {
-        setShowRegister(!showRegister)
-        setRegisterInfo({
-          email: '',
-          password: '',
-          first_name: '',
-          last_name: '',
-          user_type: '',
-          company: '',
-        })
-      }
+  //   try {
+  //     const resp = await axios.post('http://localhost/v1/index.php/register',
+  //       params,
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/x-www-form-urlencoded',
+  //           'Connection': 'keep-alive',
+  //         }
+  //       })
 
 
-    } catch (error) {
-      setToggleErrorMsg(true)
-      setErrorMsgText(error.response.data.message)
-    }
+
+  //     if (resp.data.error === true) {
+  //       setToggleErrorMsg(true)
+  //       setErrorMsgText(resp.data.message)
+  //     } else {
+  //       setShowRegister(!showRegister)
+  //       setRegisterInfo({
+  //         email: '',
+  //         password: '',
+  //         first_name: '',
+  //         last_name: '',
+  //         user_type: '',
+  //         company: '',
+  //       })
+  //     }
 
 
-  }
+  //   } catch (error) {
+  //     setToggleErrorMsg(true)
+  //     setErrorMsgText(error.response.data.message)
+  //   }
+
+
+  // }
 
 
 

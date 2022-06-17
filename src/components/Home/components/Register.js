@@ -8,6 +8,8 @@ import { useHomeContext } from '../../../contexts/HomeContext'
 import './register.css'
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import { register, reset } from '../../../features/auth/authSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
@@ -24,7 +26,7 @@ export default function Register() {
     setErrorMsgText,
     setToggleErrorMsg,
     toggleErrorMsg,
-    errorMsgText
+    errorMsgText,
   } = useHomeContext()
 
 
@@ -44,17 +46,19 @@ export default function Register() {
     setErrorMsgText('')
   }
 
-
-
-
-
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     setToggleErrorMsg(false);
   };
+
+
+  // dispatch && selector
+  const dispatch = useDispatch
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
 
 
 
@@ -146,8 +150,20 @@ export default function Register() {
 
 
 
-        <Button className='loginButton' variant="contained" onClick={() => handleSubmit()}>Sign Up</Button>
-        <Button className='loginButton' variant="contained" onClick={() => onToggleRegister()} >Go Back</Button>
+        <Button
+          className='loginButton'
+          variant="contained"
+          onClick={() => handleSubmit()}
+        >
+          Sign Up
+        </Button>
+        <Button
+          className='loginButton'
+          variant="contained"
+          onClick={() => onToggleRegister()}
+        >
+          Go Back
+        </Button>
       </Card>
     </div>
   )
