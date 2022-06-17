@@ -116,6 +116,7 @@ const HomeContextProvider = ({ children }) => {
   }
 
 
+  // login function has been replaced by Redux
   // // submit login info to login endpoint
   // const handleLoginSubmit = async () => {
   //   setToggleLoginErrorMsg(false)
@@ -166,7 +167,6 @@ const HomeContextProvider = ({ children }) => {
         showRegister,
         setShowRegister,
         handleRegisterInfo,
-        handleSubmit,
         registerInfo,
         toggleErrorMsg,
         setToggleErrorMsg,

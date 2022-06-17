@@ -60,6 +60,10 @@ export default function Register() {
     (state) => state.auth
   )
 
+  // submit account registration
+  const handleRegister = () => {
+
+  }
 
 
 
@@ -153,7 +157,10 @@ export default function Register() {
         <Button
           className='loginButton'
           variant="contained"
-          onClick={() => handleSubmit()}
+          onClick={() => {
+            // handleSubmit()
+            handleRegister()
+          }}
         >
           Sign Up
         </Button>
