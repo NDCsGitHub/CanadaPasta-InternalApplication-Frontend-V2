@@ -88,13 +88,14 @@ export default function Register() {
     }
 
     dispatch(reset())
-
+    console.log(user)
 
   }, [user, isError, isSuccess])
 
 
-
-
+  useEffect(() => {
+    console.log(user)
+  }, [user])
 
 
   return (

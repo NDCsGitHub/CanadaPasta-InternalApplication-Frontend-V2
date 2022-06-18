@@ -25,7 +25,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux'
+import { logout } from '../../../../features/auth/authSlice'
 const drawerWidth = 240;
 
 
@@ -88,6 +89,10 @@ const sidemenuButton = ['Home', 'Orders', 'Customers', 'Products'];
 
 
 export default function Sidemenu() {
+
+    // allow dispatch
+    const dispatch = useDispatch()
+
     // set redirect history after login 
     const navigate = useNavigate()
 
@@ -105,6 +110,7 @@ export default function Sidemenu() {
 
     function handleLogout() {
         localStorage.clear()
+        dispatch(logout())
         navigate('/')
     }
 
