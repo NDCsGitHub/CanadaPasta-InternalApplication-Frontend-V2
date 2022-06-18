@@ -70,7 +70,6 @@ const productsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-
             // get all product
             .addCase(getAllProducts.pending, (state) => {
                 state.isLoading = true
@@ -86,6 +85,7 @@ const productsSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
+
 
             // get product by type
             .addCase(getAllProductByType.pending, (state) => {
@@ -104,7 +104,7 @@ const productsSlice = createSlice({
             })
 
 
-            // delete product
+            // create product
             .addCase(createProduct.pending, (state) => {
                 state.isLoading = true
             })
