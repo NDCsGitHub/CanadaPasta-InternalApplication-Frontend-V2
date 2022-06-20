@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getProductByType } from '../../../../CanadaPasta-InternalApplication-Backend-V2/src/controllers/productController'
 import productService from './productService'
+
 
 
 
@@ -27,14 +27,23 @@ const getAllProductByType = createAsyncThunk('products/getAllByType', async (typ
 })
 
 
+
 // create new product
 const createProduct = createAsyncThunk('products/create', async (productData, thunkAPI) => {
     try {
-
+        const token = thunkAPI.getState().auth.user.data.token
+        return await productService.createProduct(productData, token)
     } catch (error) {
+        // check for error the message
+        const message = (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
 
+        // return and save the message in the state, so later we can useSelector to show error in register component
+        return thunkAPI.rejectWithValue(message)
     }
 })
+
 
 
 // const delete product
@@ -97,7 +106,7 @@ const productsSlice = createSlice({
                 state.isSuccess = true
                 state.productsByType = action.payload
             })
-            .addCase(getProductByType.rejected, (state, action) => {
+            .addCase(getAllProductByType.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

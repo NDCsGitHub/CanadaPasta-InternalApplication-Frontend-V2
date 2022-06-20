@@ -21,9 +21,24 @@ const getAllProducts = async (token) => {
 }
 
 
+// create a Product
+const createProduct = async (productData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const reponse = await axios.post(API_URL, productData, config)
+    return reponse.data.data
+}
+
+
+
+
+
 const productService = {
     getAllProducts,
-
+    createProduct,
 }
 
 export default productService

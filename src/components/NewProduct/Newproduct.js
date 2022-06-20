@@ -13,11 +13,17 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Grid from '@mui/material/Grid';
 import { useNewProductContext } from '../../contexts/NewProductContext'
 import MenuItem from '@mui/material/MenuItem';
+import { useSelector, useDispatch } from 'react-redux'
+import { createProduct, reset } from '../../features/product/productSlice'
 
 export default function Newproduct() {
 
   // context for product
-  const { newProductInfo, setNewProductInfo, handleProductInfo, handleSubmitProduct } = useNewProductContext()
+  const { newProductInfo, setNewProductInfo, handleProductInfo } = useNewProductContext()
+
+  // selector state, and dispatch
+  const { createdProduct, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
 
 
@@ -33,6 +39,15 @@ export default function Newproduct() {
       comment: '',
     })
   }
+
+
+  // submit data and create new product
+  const handleSubmit = () => {
+    const newProductData = newProductInfo
+    console.log(newProductData)
+  }
+
+
 
 
 
@@ -166,7 +181,7 @@ export default function Newproduct() {
           maxWidth: '42rem'
         }}>
         <Button size="large" startIcon={<DeleteSweepIcon />} onClick={() => { handleClearButton() }} >Clear</Button>
-        <Button size="large" startIcon={<CloudUploadIcon />} onClick={() => { handleSubmitProduct() }}>Submit</Button>
+        <Button size="large" startIcon={<CloudUploadIcon />} onClick={() => { handleSubmit() }}>Submit</Button>
       </CardActions>
 
 
