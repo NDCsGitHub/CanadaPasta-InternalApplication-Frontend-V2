@@ -129,8 +129,8 @@ const productsSlice = createSlice({
                 state.message = action.payload
             })
 
-            // edit prduct
-            .addCase()
+        // // edit prduct
+        // .addCase()
 
 
     }

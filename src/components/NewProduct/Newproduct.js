@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './newproduct.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -22,7 +22,7 @@ export default function Newproduct() {
   const { newProductInfo, setNewProductInfo, handleProductInfo } = useNewProductContext()
 
   // selector state, and dispatch
-  const { createdProduct, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+  const { createdProduct, isLoading, isError, isSuccess, message } = useSelector((state) => state.products)
   const dispatch = useDispatch()
 
 
@@ -44,8 +44,22 @@ export default function Newproduct() {
   // submit data and create new product
   const handleSubmit = () => {
     const newProductData = newProductInfo
-    console.log(newProductData)
+    dispatch(createProduct(newProductData))
   }
+
+  useEffect(() => {
+    if (isError) {
+      alert(message)
+    }
+
+    if (isSuccess) {
+      alert(createdProduct)
+      handleClearButton()
+    }
+
+    dispatch(reset())
+
+  }, [isError, isSuccess])
 
 
 

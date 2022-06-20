@@ -35,6 +35,10 @@ const NewProductContextProvider = ({ children }) => {
         })
     }
 
+
+
+
+    // revised using redux for serivce calls
     // const handleSubmitProduct = async () => {
     //     const params = new URLSearchParams();
     //     params.append('product_name_en', newProductInfo.product_name_en)
