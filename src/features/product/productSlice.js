@@ -33,6 +33,7 @@ const createProduct = createAsyncThunk('products/create', async (productData, th
     try {
         const token = thunkAPI.getState().auth.user.data.token
         return await productService.createProduct(productData, token)
+
     } catch (error) {
         // check for error the message
         const message = (error.response && error.response.data && error.response.data.message) ||
@@ -62,7 +63,7 @@ const deleteProduct = createAsyncThunk('product/delete', async (id, thunkAPI) =>
 const initialState = {
     allProducts: { data: [] },
     productsByType: { data: [] },
-    createdProduct: { data: [] },
+    createdProduct: {},
     isError: false,
     isSuccess: false,
     isLoading: false,

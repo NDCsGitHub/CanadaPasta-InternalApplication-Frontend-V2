@@ -38,6 +38,7 @@ export default function Newproduct() {
       description_cn: '',
       comment: '',
     })
+
   }
 
 
@@ -53,7 +54,7 @@ export default function Newproduct() {
     }
 
     if (isSuccess) {
-      alert(createdProduct)
+      alert(`Item ${createdProduct.Product_Name_EN} added! with Item ID ${createdProduct._id}`)
       handleClearButton()
     }
 
@@ -128,6 +129,7 @@ export default function Newproduct() {
                 label="Product Type"
                 name='product_type'
                 margin="dense"
+                value={newProductInfo.product_type}
                 defaultValue={''}
                 onChange={(e) => { handleProductInfo(e) }}
               >
