@@ -4,8 +4,17 @@ import customerService from './customerService'
 
 
 
+// create customer
+const createCustomer = createAsyncThunk('customer/create', async (customerData, thunkAPI) => {
+    try {
+        // get Token 
+        const token = thunkAPI.getState().auth.user.data.token
 
+        return await customerService.createCustomer(customerData, token)
+    } catch (error) {
 
+    }
+})
 
 
 
@@ -39,3 +48,11 @@ const customerSlice = createSlice({
         // 
     }
 })
+const { reset } = customerSlice.reducer
+
+// export
+export {
+    customerSlice,
+    reset,
+
+}
