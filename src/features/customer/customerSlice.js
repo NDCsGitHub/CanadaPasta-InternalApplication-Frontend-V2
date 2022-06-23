@@ -27,7 +27,7 @@ const createCustomer = createAsyncThunk('customer/create', async (customerData, 
 // define inital states
 const initialState = {
     allCustomer: { data: [] },
-    createCustomer: {},
+    createdCustomer: {},
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -44,8 +44,23 @@ const customerSlice = createSlice({
     extraReducers: (builder) => {
         builder
             // create customer
-            .addCase()
-        // 
+            .addCase(createCustomer.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(createCustomer.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.createdCustomer = action.payload
+            })
+            .addCase(createCustomer.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+
+
+
+
     }
 })
 const { reset } = customerSlice.reducer
